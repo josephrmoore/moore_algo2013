@@ -2,13 +2,16 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-
+    earth = 0.97;
+    jupiter = 2.48;
+    moon = 0.16;
+    gravity = earth;
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     for(int i=0; i<balls.size(); i++){
-        balls[i].update();
+        balls[i].update(gravity);
     }
 }
 
@@ -21,7 +24,15 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+    if(key == 'e' || key == 'E'){
+        gravity = earth;
+    }
+    if(key == 'j' || key == 'J'){
+        gravity = jupiter;
+    }
+    if(key == 'm' || key == 'M'){
+        gravity = moon;
+    }
 }
 
 //--------------------------------------------------------------
@@ -41,7 +52,7 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-    Ball b = Ball();
+    Ball b = Ball(mouseX, mouseY);
     balls.push_back(b);
 }
 

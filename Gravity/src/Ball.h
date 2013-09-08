@@ -12,9 +12,9 @@
 
 class Ball {
     public:
-        Ball();
+        Ball(float x, float y);
     
-        void update();
+        void update(float g);
         void draw();
         bool collide;
         void toggleCollide();

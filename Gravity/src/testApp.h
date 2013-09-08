@@ -21,4 +21,5 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
         vector <Ball> balls;
+        float earth, moon, jupiter, gravity;
 };
