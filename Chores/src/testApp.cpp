@@ -38,6 +38,7 @@ void testApp::draw(){
             dots[i].breathe(600, 1.3);
         } else if (i == 1){
             dots[i].breathe(0, 1.2, true);
+            dots[i].swarm(dots[i].swarm_anchor);
         }
         dots[i].draw();
     }

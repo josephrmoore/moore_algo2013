@@ -25,6 +25,8 @@ Dot::Dot(){
     shake_dir = false;
     
     breathing_r = radius;
+    
+    swarm_anchor = pos;
 }
 
 void Dot::update() {
@@ -58,6 +60,16 @@ void Dot::shake(float distance) {
         pos.x -= shake_amt;
         shake_dir = !shake_dir;
     }
+}
+
+void Dot::swarm(ofPoint p){
+    float xorig = p.x;
+	float yorig = p.y;
+	float angle = ofGetElapsedTimef()*3.5;
+	float radius = 200;
+	pos.x = xorig + 200.0*(sin(ofGetElapsedTimeMillis()/200.0)) * cos(angle * 3.4);    // 3.4
+	pos.y = yorig + 200.0*(cos(ofGetElapsedTimeMillis()/200.0)) * sin(angle * 4.7);   // 4.7
+	
 }
 
 //void Dot::gravity(float g) {

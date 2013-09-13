@@ -15,7 +15,7 @@ class Dot{
         Dot();
         void update();
         void draw();
-        ofPoint pos, vel, rot;
+        ofPoint pos, vel, swarm_anchor;
         ofColor color;
         float radius, gravity, shake_amt, breathing_r;
         bool moving, breathing, shaking, shake_dir;
