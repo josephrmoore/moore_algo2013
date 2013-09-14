@@ -15,7 +15,7 @@ class Dot{
         Dot();
         ofPoint pos, vel, radius, swarm_anchor;
         ofColor color;
-        float gravity, rotation, shake_amt, breathing_r, rX, rY, shrink_timer;
+        float gravity, rotation, shake_amt, breathing_r, rX, rY, shrink_timer, line_y;
         bool moving, breathing, shaking;
         bool lining, falling, bouncing, settling;
         bool darting, rolling, jumping, flattening;

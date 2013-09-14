@@ -35,7 +35,7 @@ void testApp::update(){
             dots[i].line(2.0);
         } else if(ofGetElapsedTimeMillis() > 1300 && ofGetElapsedTimeMillis() <= 2100){
             dots[i].fall(0.98);
-        } else if(ofGetElapsedTimeMillis() > 2100 && ofGetElapsedTimeMillis() <= 7300){
+        } else if(ofGetElapsedTimeMillis() > 2100){
             dots[i].fall(0.0795);
         } else {
             dots[i].xenoToPoint(dots[i].pos.x, ofGetHeight()-(dots[i].radius.y/2), 0.5, 0.5);
@@ -103,6 +103,9 @@ void testApp::update(){
 void testApp::draw(){
     for(int i=0; i<dots.size(); i++){
         dots[i].draw(dots[i].radius, dots[i].pos);
+        ofSetLineWidth(10);
+        ofSetColor(255);
+        ofLine(dots[i].pos.x, 0, dots[i].pos.x, dots[i].line_y);
     }
     if (ofGetElapsedTimeMillis() > 15150 && ofGetElapsedTimeMillis() <= 17000){
         pro.draw(pro.flatten(10.0), ofPoint(pro.pos.x, pro.pos.y+20));

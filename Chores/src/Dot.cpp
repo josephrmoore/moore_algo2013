@@ -45,6 +45,8 @@ Dot::Dot(){
     shrink_timer = 0;
     
     type = "dot";
+    
+    line_y = pos.y;
 }
 
 void Dot::update() {
@@ -90,6 +92,7 @@ float Dot::shake(float distance) {
 
 void Dot::line(float amt){
     pos.y += amt;
+    line_y = pos.y;
 }
 
 void Dot::fall(float gravity){
