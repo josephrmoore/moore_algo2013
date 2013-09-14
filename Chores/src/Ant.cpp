@@ -9,12 +9,38 @@
 #include "Ant.h"
 
 Ant::Ant(){
-    pos.x = ofGetScreenWidth()/2;
-    pos.y = ofGetScreenHeight()/2;
+    pos.x = -800.0;
+    pos.y = 200.0;
     
     vel.x = 0.0;
     vel.y = 0.0;
     
     color = ofColor(242, 225, 33);
-    radius = 10.0;
+    radius.x = 30.0;
+    radius.y = 30.0;
+    
+    rotation = 0.0;
+    gravity = 0.98;
+    
+    // pos
+    moving = false;
+    shaking = false;
+    darting = false;
+    rolling = false;
+    jumping = false;
+    swarming = false;
+    looping = false;
+    approaching = false;
+    
+    // radius
+    breathing = false;
+    shrinking = false;
+    flattening = false;
+    
+    shake_dir = false;
+    
+    swarm_anchor = pos;
+    shrink_timer = 0;
+    
+    type = "ant";
 }

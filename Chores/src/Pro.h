@@ -14,4 +14,5 @@
 class Pro : public Dot {
 public:
     Pro();
+    void draw(ofPoint r, ofPoint p);
 };

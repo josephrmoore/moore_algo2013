@@ -24,4 +24,7 @@ class testApp : public ofBaseApp{
         ofSoundPlayer sound;
         bool sound_started;
         vector <Dot> dots;
+        Pro pro;
+        Ant ant;
+        int people;
 };
