@@ -15,7 +15,8 @@ Ant::Ant(){
     vel.x = 0.0;
     vel.y = 0.0;
     
-    color = ofColor(242, 225, 33);
+//    color = ofColor(253, 241, 174);
+//    color = ofColor(242, 225, 33);
     radius.x = 30.0;
     radius.y = 30.0;
     
@@ -43,4 +44,11 @@ Ant::Ant(){
     shrink_timer = 0;
     
     type = "ant";
+}
+
+void Ant::update(){
+    pos.x += vel.x;
+    pos.y += vel.y;
+    color = ofColor(ofMap(sin(ofGetElapsedTimeMillis()/200), -1.0, 1.0, 100.0, 255.0), ofMap(sin(ofGetElapsedTimeMillis()/100.0), -1.0, 1.0, 100.0, 240.0), ofMap(sin(ofGetElapsedTimeMillis()/300), -1.0, 1.0, 100.0, 175.0));
+    //    color = ofColor(242, 225, 33);
 }

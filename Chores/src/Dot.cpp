@@ -22,7 +22,7 @@ Dot::Dot(){
     gravity = 0.98;
     radius.x = ofRandom(30.0, 50.0);
     radius.y = radius.x;
-    color = ofColor(255);
+    color = ofColor(ofRandom(50.0, 155.0));
     
     // pos
     moving = false;

@@ -12,7 +12,8 @@ Pro::Pro(){
     pos.x = -radius.x-30;
     pos.y = ofGetHeight()-50;
     
-    color = ofColor(180,44,44);
+//    color = ofColor(90,55,125);
+    color = ofColor(90,80,140,125);
     radius.x = 100.0;
     radius.y = 100.0;
     
@@ -51,7 +52,6 @@ void Pro::draw(ofPoint r, ofPoint p){
     
     ofPushMatrix();
     {
-        cout<<p.x/2<<r.x<<endl;
         ofTranslate(pos.x/2, pos.y/2);
         ofRotate(rotation,0,0,1);
         ofTranslate(-pos.x/2, -pos.y/2);

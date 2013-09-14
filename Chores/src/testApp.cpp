@@ -4,6 +4,7 @@
 void testApp::setup(){
     people = 10;
     ofSetVerticalSync(true);
+    ofEnableAlphaBlending();
     sound.loadSound("chores.mp3");
     // protagonist
     pro = Pro();
@@ -15,7 +16,7 @@ void testApp::setup(){
         dot.pos.x = i*(ofGetWidth()/people)+52;
         dots.push_back(dot);
     }
-    ofBackground(125);
+    ofBackground(0);
     ofSetRectMode(OF_RECTMODE_CENTER);
 }
 
@@ -101,13 +102,14 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    
     for(int i=0; i<dots.size(); i++){
         dots[i].draw(dots[i].radius, dots[i].pos);
         ofSetLineWidth(10);
-        ofSetColor(255);
+        ofSetColor(dots[i].color);
         ofLine(dots[i].pos.x, 0, dots[i].pos.x, dots[i].line_y);
     }
-    if (ofGetElapsedTimeMillis() > 15150 && ofGetElapsedTimeMillis() <= 17000){
+    if (ofGetElapsedTimeMillis() > 15150 && ofGetElapsedTimeMillis() <= 20300){
         pro.draw(pro.flatten(10.0), ofPoint(pro.pos.x, pro.pos.y+20));
     } else {
         pro.draw(pro.breathe(600.0, 1.2), pro.pos);

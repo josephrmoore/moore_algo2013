@@ -14,4 +14,5 @@
 class Ant: public Dot {
 public:
     Ant();
+    void update();
 };
