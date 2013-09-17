@@ -5,13 +5,15 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
     ofBackground(0);
-//    ofSetBackgroundAuto(false);
+     glEnable(GL_DEPTH_TEST);
     sound.loadSound("sevenstars.mp3");
     sound.play();
     for(int i=0; i<2; i++){
         d = Dot();
         dots.push_back(d);
     }
+    bk = true;
+    ofSetBackgroundAuto(bk);
 }
 
 //--------------------------------------------------------------
@@ -19,24 +21,28 @@ void testApp::update(){
     
     if(ofGetElapsedTimef()>6){
             
-    if((int)ofGetElapsedTimef() % 3 == 0 && ofGetElapsedTimef() > 15){
-        if(ofRandom(10)<=5.0){
-            ofSetBackgroundAuto(true);
-        } else {
-            ofSetBackgroundAuto(false);
+        if((int)ofGetElapsedTimef() % 3 == 0 && ofGetElapsedTimef() > 15){
+            if(ofRandom(10)<=5.0){
+                if(bk == false){
+                    i.grabScreen(0,0,ofGetWidth(), ofGetHeight());
+                }
+                bk = true;
+            } else {
+                bk = false;
+            }
+            ofSetBackgroundAuto(bk);
         }
-    }
-    
-    if(ofGetElapsedTimef() > 59){
-        if(dots.size()>=1){
-            dots.erase(dots.begin());
+        
+        if(ofGetElapsedTimef() > 59){
+            if(dots.size()>=1){
+                dots.erase(dots.begin());
+            }
+        } else if(ofGetElapsedTimef() < 56){
+            if(ofGetElapsedTimef()*2 > dots.size()){
+                d = Dot();
+                dots.push_back(d);
+            }
         }
-    } else if(ofGetElapsedTimef() < 56){
-        if(ofGetElapsedTimef()*2 > dots.size()){
-            d = Dot();
-            dots.push_back(d);
-        }
-    }
     }
     for(int i=0; i<dots.size(); i++){
 //        dots[i].pos.x = i*c(c(50.0, i*4.0, true), i*4.0, false);
@@ -60,6 +66,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     ofPushMatrix();{
+        i.draw(0,0,-1,ofGetWidth(), ofGetHeight());
         ofTranslate(512,384);
         ofRotate(ofGetElapsedTimeMillis()/7.0);
         ofTranslate(-512,-384);
@@ -67,6 +74,7 @@ void testApp::draw(){
     if((ofGetElapsedTimef()>10 && ofGetElapsedTimef()<30) || ofGetElapsedTimef()>50){
         ofRotate(s(ofGetElapsedTimef()*50, 200.0, true));
     }
+
     for(int i=0; i<dots.size(); i++){
         dots[i].draw();
     }

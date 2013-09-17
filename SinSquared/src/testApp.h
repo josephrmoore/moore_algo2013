@@ -25,4 +25,6 @@ class testApp : public ofBaseApp{
         Dot d;
         vector <Dot> dots;
         ofSoundPlayer sound;
+        ofImage i;
+        bool bk;
 };

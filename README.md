@@ -10,9 +10,9 @@ I made it and can show it to you in person if you like. I am currently making a 
 
 Week 2:
 
-Gravity
-BleedingCanvas
-3DBox
+Gravity (gravity)
+BleedingCanvas (background autoclear doodling tool)
+3DBox (sphere bouncing in 3d box)
 
 Videos
 
