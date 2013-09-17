@@ -10,14 +10,29 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     ico_pos = ofPoint(mouseX, mouseY);
-    yorda_pos = xenoToPoint(ico_pos.x, ico_pos.y, 0.01, 0.01, yorda_pos);
+    yorda_pos = xenoToPoint(ico_pos.x+110, ico_pos.y+80, 0.05, 0.05, yorda_pos);
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     floor.draw(0,0);
     ico.draw(ico_pos.x,ico_pos.y);
-    yorda.draw(yorda_pos.x,yorda_pos.y);
+    
+    ofPushMatrix();{
+        ofTranslate( yorda_pos );
+        float dx = mouseX - yorda_pos.x;
+        float dy = mouseY - yorda_pos.y;
+        float angle = atan2( dy , dx );
+        ofRotate( ofRadToDeg(angle) );
+        ofTranslate( -yorda_pos );
+        ofPushMatrix();{
+            ofTranslate(-38, -55);
+            yorda.draw(yorda_pos.x,yorda_pos.y);
+            ofTranslate(38, 55);
+        }ofPopMatrix();
+
+    }ofPopMatrix();
+    
 }
 
 //--------------------------------------------------------------
