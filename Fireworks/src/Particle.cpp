@@ -8,13 +8,13 @@
 
 #include "Particle.h"
 
-void Particle::setup(){
+void Particle::setup(ofVec2f p){
     age = 0;
     lifespan = ofRandom(50, 150);
     bIsDead = false;
     agePct = 1.0;
     vel = ofVec2f( ofRandom(1.0), ofRandom(1.0) ) * 10.0 - 5.0;
-    pos = ofVec2f(512, 384);
+    pos = p;
     color = ofColor(ofRandom(255), ofRandom(255), ofRandom(255));
     radius = 5.0;
 }

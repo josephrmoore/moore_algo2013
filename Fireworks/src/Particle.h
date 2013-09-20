@@ -13,7 +13,7 @@
 class Particle {
 public:
     Particle(){};
-    void setup();
+    void setup(ofVec2f p);
     void update();
     void draw();
     

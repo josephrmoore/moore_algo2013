@@ -11,24 +11,25 @@
 void Firework::setup(){
     speed = -15.0;
     pos = ofVec2f(ofGetWidth()/2, ofGetHeight());
-    vel = ofVec2f(ofRandom(-5.0,5.0), speed);
+    vel = ofVec2f(ofRandom(-10.0,10.0), speed);
     detonate_y = ofGetHeight()/2;
     detonated = false;
     number = 50;
+    color = ofColor(ofRandom(255), ofRandom(255), ofRandom(255));
 }
 
 void Firework::update(){
     pos += vel;
     vel *= 0.97;
-    if(pos.y <= detonate_y){
+    if(pos.y <= detonate_y && detonated == false){
         detonated = true;
-        explode();
+        explode(pos);
     }
     trails.push_back(pos);
     if(detonated){
+        trails.clear();
         for( vector<Particle>::iterator it=pList.begin(); it!=pList.end(); ){
             it->update();
-            cout<<"updating"<<endl;
             if( it->bIsDead ){
                 it = pList.erase(it);
                 ofLog( OF_LOG_NOTICE, "size is " + ofToString(pList.size()) );
@@ -42,15 +43,14 @@ void Firework::update(){
 void Firework::draw(){
 
     if(detonated){
-        cout<<":detonated"<<endl;
         for( vector<Particle>::iterator it = pList.begin(); it!=pList.end(); it++){
             it->draw();
         }
     } else {
-        cout<<"not det"<<endl;
-        for(int i=0; i<trails.size(); i++){
-            ofSetColor(255*ofMap(sin(ofGetElapsedTimeMillis()/200.0), -1.0,1.0,0,1));
-            ofCircle(trails[i], 5);
+        for( vector<ofPoint>::iterator it = trails.begin(); it!=trails.end(); it++){
+            ofSetColor(205*ofMap(sin(ofGetElapsedTimeMillis()/200.0), -1.0,1.0,0,1));
+            ofCircle(it->x, it->y, 5);
+            
         }
         ofSetColor(255);
         ofFill();
@@ -58,11 +58,11 @@ void Firework::draw(){
     }
 }
 
-void Firework::explode(){
-    cout<<"explode!"<<endl;
+void Firework::explode(ofVec2f p){
         for( int i=0; i<number; i++ ){
-            Particle p;
-            p.setup();
-            pList.push_back( p );
+            Particle pa;
+            pa.setup(p);
+            pa.color = color;
+            pList.push_back( pa );
         }
 }

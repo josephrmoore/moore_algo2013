@@ -26,5 +26,5 @@ public:
     bool shrieks, has_trails, detonated;
     vector <ofPoint> trails;
     vector <Particle> pList;
-    void explode();
+    void explode(ofVec2f p);
 };

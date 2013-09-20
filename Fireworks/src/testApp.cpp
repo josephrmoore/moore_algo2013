@@ -6,18 +6,21 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     ofEnableAlphaBlending();
-    f.setup();
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 
-    f.update();
+    for(vector<Firework>::iterator it=fireworks.begin(); it!=fireworks.end(); it++){
+        it->update();
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    f.draw();
+    for(vector<Firework>::iterator it=fireworks.begin(); it!=fireworks.end(); it++){
+        it->draw();
+    }
 }
 
 //--------------------------------------------------------------
@@ -42,7 +45,9 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-    
+    Firework f;
+    f.setup();
+    fireworks.push_back(f);
 }
 
 //--------------------------------------------------------------
