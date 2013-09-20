@@ -52,9 +52,21 @@ void testApp::update(){
         dots[i].radius.x = s(s(50.0, i*4.0, true), i*4.0, false);
         dots[i].radius.y = s(s(50.0, i*4.0, true), i*4.0, false);
         dots[i].opacity = s(255.0, i*4.0, true);
+        
+//        dots[i].pos.x = s(30.0, i*3.0, false)*s(30.0, i*3.0, false);
+//        dots[i].pos.y = s(30.0, i*3.0, false)*s(30.0, i*3.0, false);
+        
         dots[i].pos.x = c(c(c(500.0, i*40.0, true), i*4.0, true), i*4.0, false);
         dots[i].pos.y = s(300.0, i*3.0, false);
+        
+        dots[i].color = ofColor(255,0,0, dots[i].opacity);
+//        dots[i].color.setHue(s(255.0, i*s(10.0,200.0,true), false)-ofMap(mouseY, 0.0,1024.0,0.0,255.0));
+//        dots[i].color.setBrightness(c(255.0, i*s(10.0,200.0,true), false)-ofMap(mouseX, 0.0,1024.0,0.0,255.0));
+        
+//        dots[i].color = ofColor(ofMap(mouseX, 0.0,1024.0,0.0,255.0), s(255.0, i*s(10.0,200.0,true), false)-ofMap(mouseY, 0.0,1024.0,0.0,255.0), c(510.0, i*4.0, false)/2, dots[i].opacity);
+
         dots[i].color = ofColor(c(255.0, i*s(10.0,200.0,true), false)-ofMap(mouseX, 0.0,1024.0,0.0,255.0), s(255.0, i*s(10.0,200.0,true), false)-ofMap(mouseY, 0.0,1024.0,0.0,255.0), c(510.0, i*s(4.0, i, true), false)/2, dots[i].opacity);
+        
 //        dots[i].vel.x = i*c(c(50.0, i*4.0, true), i*4.0, false);
 //        dots[i].vel.y = i*s(s(30.0, i*3.0, true), i*3.0, false);
 //        dots[i].radius.x = c(c(50.0, i*4.0, true), i*4.0, false);

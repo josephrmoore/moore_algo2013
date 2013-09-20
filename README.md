@@ -27,4 +27,9 @@ SinSquared (Whitney)
 
 Week 4:
 
+Finished Whitney
+PiratePad updated
+OF->Processing => line_creature (OF sketch to Processing)
+Fireworks
 
+Video is in the repo: (not yet!)
