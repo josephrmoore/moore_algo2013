@@ -16,11 +16,11 @@ public:
     Firework(){};
     void setup();
     void update();
-    void draw();
+    void draw(float x, float y);
     
     ofVec2f pos;
     ofVec2f vel;
-    float detonate_y, size, speed;
+    float detonate_y, size, speed, timer, curve;
     int number;
     ofColor color;
     bool shrieks, has_trails, detonated;

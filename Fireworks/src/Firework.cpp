@@ -9,17 +9,20 @@
 #include "Firework.h"
 
 void Firework::setup(){
-    speed = -15.0;
+    speed = -20.0;
     pos = ofVec2f(ofGetWidth()/2, ofGetHeight());
     vel = ofVec2f(ofRandom(-10.0,10.0), speed);
-    detonate_y = ofGetHeight()/2;
+    detonate_y = ofGetHeight()/2-200 + ofRandom(-35.0,35.0);
     detonated = false;
     number = 50;
     color = ofColor(ofRandom(255), ofRandom(255), ofRandom(255));
+    timer = ofGetElapsedTimeMillis();
+    curve = ofRandom(-vel.x, vel.x);
 }
 
 void Firework::update(){
-    pos += vel;
+    pos.x += 5.0*(powf(cos(curve), 3.0));
+    pos.y += vel.y;
     vel *= 0.97;
     if(pos.y <= detonate_y && detonated == false){
         detonated = true;
@@ -40,15 +43,15 @@ void Firework::update(){
     }
 }
 
-void Firework::draw(){
+void Firework::draw(float x, float y){
 
     if(detonated){
         for( vector<Particle>::iterator it = pList.begin(); it!=pList.end(); it++){
-            it->draw();
+                it->draw();
         }
     } else {
         for( vector<ofPoint>::iterator it = trails.begin(); it!=trails.end(); it++){
-            ofSetColor(205*ofMap(sin(ofGetElapsedTimeMillis()/200.0), -1.0,1.0,0,1));
+            ofSetColor(75*ofMap(sin((ofGetElapsedTimeMillis()-timer)/220.0), -1.0,1.0,0,1));
             ofCircle(it->x, it->y, 5);
             
         }

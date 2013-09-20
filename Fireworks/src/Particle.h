@@ -17,8 +17,7 @@ public:
     void update();
     void draw();
     
-    ofVec2f pos;
-    ofVec2f vel;
+    ofVec2f pos, vel, acc;
     int age, lifespan;
     bool bIsDead;
     ofColor color;

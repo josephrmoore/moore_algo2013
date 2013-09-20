@@ -19,7 +19,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     for(vector<Firework>::iterator it=fireworks.begin(); it!=fireworks.end(); it++){
-        it->draw();
+        it->draw(mouseX, mouseY);
     }
 }
 
@@ -48,6 +48,8 @@ void testApp::mousePressed(int x, int y, int button){
     Firework f;
     f.setup();
     fireworks.push_back(f);
+    cout<<mouseX<<" "<<mouseY<<endl;
+
 }
 
 //--------------------------------------------------------------
