@@ -14,7 +14,7 @@
 class Firework {
 public:
     Firework(){};
-    void setup();
+    void setup(ofSoundPlayer s1, ofSoundPlayer s2);
     void update();
     void draw(float x, float y);
     
@@ -27,4 +27,5 @@ public:
     vector <ofPoint> trails;
     vector <Particle> pList;
     void explode(ofVec2f p);
+    ofSoundPlayer reax, explosion;
 };

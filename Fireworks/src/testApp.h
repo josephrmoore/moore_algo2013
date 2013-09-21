@@ -26,4 +26,6 @@ class testApp : public ofBaseApp{
         void playFireworks(float start, float duration);
         int totalFireworks, currentFirework;
         float startAnimation;
+        vector<ofSoundPlayer> reax;
+        vector<ofSoundPlayer> explosions;
 };

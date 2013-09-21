@@ -8,7 +8,7 @@
 
 #include "Firework.h"
 
-void Firework::setup(){
+void Firework::setup(ofSoundPlayer s1, ofSoundPlayer s2){
     speed = -20.0;
     pos = ofVec2f(ofGetWidth()/2, ofGetHeight());
     vel = ofVec2f(ofRandom(-10.0,10.0), speed);
@@ -18,6 +18,8 @@ void Firework::setup(){
     timer = ofGetElapsedTimeMillis();
     curve = ofRandom(-vel.x, vel.x);
     over = false;
+    reax = s1;
+    explosion = s2;
 }
 
 void Firework::update(){
@@ -65,11 +67,13 @@ void Firework::draw(float x, float y){
 }
 
 void Firework::explode(ofVec2f p){
-        number = ofMap(sin(ofGetElapsedTimeMillis()), -1.0,1.0,0,1.0)*80+20;
-        for( int i=0; i<number; i++ ){
-            Particle pa;
-            pa.setup(p);
-            pa.color = color;
-            pList.push_back( pa );
-        }
+    number = ofMap(sin(ofGetElapsedTimeMillis()), -1.0,1.0,0,1.0)*80+20;
+    for( int i=0; i<number; i++ ){
+        Particle pa;
+        pa.setup(p);
+        pa.color = color;
+        pList.push_back( pa );
+    }
+    reax.play();
+    explosion.play();
 }

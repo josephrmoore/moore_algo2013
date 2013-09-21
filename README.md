@@ -27,7 +27,7 @@ SinSquared (Whitney)
 
 Week 4:
 
-Finished Whitney
+Finished Whitney last week
 PiratePad updated
 OF->Processing => line_creature (OF sketch to Processing)
 Fireworks

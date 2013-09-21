@@ -9,6 +9,14 @@ void testApp::setup(){
     totalFireworks = 100;
     currentFirework = 0;
     startAnimation = ofGetElapsedTimeMillis();
+    for(int i=0; i<6; i++){
+        ofSoundPlayer f;
+        f.loadSound("firework" + ofToString(i) + ".mp3");
+        explosions.push_back(f);
+        ofSoundPlayer r;
+        r.loadSound("reax" + ofToString(i) + ".mp3");
+        reax.push_back(r);
+    }
 }
 
 //--------------------------------------------------------------
@@ -169,8 +177,10 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 void testApp::playFireworks(float start, float duration){
     if(ofGetElapsedTimeMillis()-start>=duration){
+        float r_rand = ofRandom(reax.size());
+        float e_rand = ofRandom(explosions.size());
         Firework f;
-        f.setup();
+        f.setup(reax[r_rand], explosions[e_rand]);
         fireworks.push_back(f);
         currentFirework++;
         startAnimation = ofGetElapsedTimeMillis();
