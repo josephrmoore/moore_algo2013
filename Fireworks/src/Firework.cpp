@@ -14,10 +14,10 @@ void Firework::setup(){
     vel = ofVec2f(ofRandom(-10.0,10.0), speed);
     detonate_y = ofGetHeight()/2-200 + ofRandom(-35.0,35.0);
     detonated = false;
-    number = 50;
     color = ofColor(ofRandom(255), ofRandom(255), ofRandom(255));
     timer = ofGetElapsedTimeMillis();
     curve = ofRandom(-vel.x, vel.x);
+    over = false;
 }
 
 void Firework::update(){
@@ -39,6 +39,9 @@ void Firework::update(){
             }else {
                 it++;
             }
+        }
+        if(pList.size()==0){
+            over = true;
         }
     }
 }
@@ -62,6 +65,7 @@ void Firework::draw(float x, float y){
 }
 
 void Firework::explode(ofVec2f p){
+        number = ofMap(sin(ofGetElapsedTimeMillis()), -1.0,1.0,0,1.0)*80+20;
         for( int i=0; i<number; i++ ){
             Particle pa;
             pa.setup(p);

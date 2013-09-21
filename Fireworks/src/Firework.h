@@ -23,7 +23,7 @@ public:
     float detonate_y, size, speed, timer, curve;
     int number;
     ofColor color;
-    bool shrieks, has_trails, detonated;
+    bool shrieks, has_trails, detonated, over;
     vector <ofPoint> trails;
     vector <Particle> pList;
     void explode(ofVec2f p);

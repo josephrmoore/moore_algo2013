@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		33D597B317EBFBEE00546DEE /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33D597B117EBFBEE00546DEE /* Particle.cpp */; };
 		33D597B717EC190200546DEE /* Firework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33D597B517EC190200546DEE /* Firework.cpp */; };
+		33D597C017EC9E1700546DEE /* TimePoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33D597BE17EC9E1700546DEE /* TimePoint.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -66,6 +67,8 @@
 		33D597B217EBFBEE00546DEE /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		33D597B517EC190200546DEE /* Firework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Firework.cpp; sourceTree = "<group>"; };
 		33D597B617EC190200546DEE /* Firework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firework.h; sourceTree = "<group>"; };
+		33D597BE17EC9E1700546DEE /* TimePoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimePoint.cpp; sourceTree = "<group>"; };
+		33D597BF17EC9E1700546DEE /* TimePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimePoint.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -193,6 +196,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				33D597B117EBFBEE00546DEE /* Particle.cpp */,
 				33D597B217EBFBEE00546DEE /* Particle.h */,
+				33D597BE17EC9E1700546DEE /* TimePoint.cpp */,
+				33D597BF17EC9E1700546DEE /* TimePoint.h */,
 				33D597B517EC190200546DEE /* Firework.cpp */,
 				33D597B617EC190200546DEE /* Firework.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
@@ -301,6 +306,7 @@
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				33D597B317EBFBEE00546DEE /* Particle.cpp in Sources */,
 				33D597B717EC190200546DEE /* Firework.cpp in Sources */,
+				33D597C017EC9E1700546DEE /* TimePoint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

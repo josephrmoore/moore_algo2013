@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "Particle.h"
 #include "Firework.h"
+#include "TimePoint.h"
 
 class testApp : public ofBaseApp{
 
@@ -21,4 +22,8 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
         vector<Firework> fireworks;
+        vector<TimePoint> points;
+        void playFireworks(float start, float duration);
+        int totalFireworks, currentFirework;
+        float startAnimation;
 };
