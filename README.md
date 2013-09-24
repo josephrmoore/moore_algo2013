@@ -6,7 +6,8 @@ All the sketches are here, use A, B, C, D, E, & F to switch between them.
 
 Flipbook
 
-I made it and can show it to you in person if you like. I am currently making a video of my flipbook, so I will include it here when I am done.
+Digitized video version is in the repo: beyourself.mov
+(But I made it and can show it to you in person if you like.)
 
 Week 2:
 
@@ -32,4 +33,4 @@ PiratePad updated
 OF->Processing => line_creature (OF sketch to Processing)
 Fireworks
 
-Video is in the repo: (not yet!)
+Video is in the repo: particlesystem.mov
