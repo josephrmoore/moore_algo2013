@@ -1,0 +1,35 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>Speed</Name>
+    <Value>2.187500000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Number</Name>
+    <Value>1354.166625977</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Size</Name>
+    <Value>3.020833492</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Hue</Name>
+    <Value>70.390625000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Saturation</Name>
+    <Value>77.031250000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>Brightness</Name>
+    <Value>243.046875000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>Gravity</Name>
+    <Value>0</Value>
+</Widget>
