@@ -34,3 +34,13 @@ OF->Processing => line_creature (OF sketch to Processing)
 Fireworks
 
 Video is in the repo: particlesystem.mov
+
+Week 5:
+
+ParticleControl (use 1,2,3 to see the settings change at runtime)
+<!-- :::I don't like what I've done here. I need to see you about images.::: -->
+ParticleSinCos
+Advanced::ParticleDraw
+
+Paper
+Read it. Loved it. Gonna use it in my thesis. Thanks. The system I wrote about is in the folder WRITING, called Emergent Music.

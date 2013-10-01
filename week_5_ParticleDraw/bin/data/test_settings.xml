@@ -1,0 +1,25 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>radius</Name>
+    <Value>6.979166985</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>opacity</Name>
+    <Value>62.421875000</Value>
+</Widget>
+<Widget>
+    <Kind>21</Kind>
+    <Name>hue</Name>
+    <Value>21.431644440</Value>
+</Widget>
+<Widget>
+    <Kind>21</Kind>
+    <Name>sat</Name>
+    <Value>118.812454224</Value>
+</Widget>
+<Widget>
+    <Kind>21</Kind>
+    <Name>bright</Name>
+    <Value>105.920234680</Value>
+</Widget>
