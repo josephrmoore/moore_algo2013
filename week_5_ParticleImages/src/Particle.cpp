@@ -35,7 +35,7 @@ void Particle::resetForces() {
 }
 
 void Particle::update() {
-    img.resize(sin(ofGetElapsedTimeMillis())*img_w,cos(ofGetElapsedTimeMillis())*img_h);
+//    img.resize(sin(ofGetElapsedTimeMillis())*img_w,cos(ofGetElapsedTimeMillis())*img_h);
     vel = vel + frc;
     pos = pos + vel;
 }
