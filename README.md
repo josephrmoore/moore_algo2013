@@ -44,3 +44,11 @@ Advanced::ParticleDraw
 
 Paper
 Read it. Loved it. Gonna use it in my thesis. Thanks. The system I wrote about is in the folder WRITING, called Emergent Music.
+
+Week 6:
+
+SolitaireEnding - A literal interpretation which inspired...
+SolitaireEndingAbstract - I think of it as Impressionist Rain
+Attraction - Use 1,2,3,4,5 to control the experience
+StrangeAttractorOwen - I didn't "do" this assignment as attempt to do a couple things and modified Owen's beautiful work
+

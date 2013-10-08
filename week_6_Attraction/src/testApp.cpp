@@ -38,7 +38,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofSetColor(0, 10);
+    ofSetColor(0, 5);
     ofRect(0,0,ofGetWidth(),ofGetHeight());
 //    ofSetColor(cursor_color);
 //    ofRect(cursor_pos.x,cursor_pos.y,20,20);
