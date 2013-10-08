@@ -48,6 +48,8 @@ void testApp::setup(){
         
         points.push_back( tmp );
         Particle p;
+        p.pos.x = tmp.x;
+        p.pos.y = tmp.y;
         particles.push_back(p);
     }
     
@@ -100,7 +102,8 @@ void testApp::onGuiEvent(ofxUIEventArgs &e){
         b += ofRandom(-0.01, 0.01);
         c += ofRandom(-0.01, 0.01);
         d += ofRandom(-0.01, 0.01);
-        
+        particles[i].pos.x = points[i].x;
+        particles[i].pos.y = points[i].y;
     }
 }
 
@@ -124,14 +127,14 @@ void testApp::draw(){
         ofTranslate(ofGetWindowSize() / 2);
         
         for (vector<ofPoint>::iterator it = points.begin(); it != points.end(); it++) {
-            ofVertex(it->x, it->y);
+//            ofVertex(it->x, it->y);
         }
         ofEndShape();
-
+        for(int i=0; i<particles.size();i++){
+            particles[i].draw();
+        }
     }ofPopMatrix();
-//    for(int i=0; i<particles.size();i++){
-//        particles[i].draw();
-//    }
+
 }
 
 //--------------------------------------------------------------

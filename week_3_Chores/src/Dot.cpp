@@ -218,6 +218,7 @@ void Dot::applyGravity(float g, float floor, bool bounce) {
     }
     if(pos.y >= (floor) && bounce){
         vel.y *= -1.0;
+        pos.y = floor;
     }
     vel *= ofRandom(0.95,0.97);
 }

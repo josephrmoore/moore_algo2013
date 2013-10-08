@@ -12,7 +12,8 @@ Particle::Particle(){
     damping = 0.05;
     pos.x = ofRandom(ofGetWidth());
     pos.y = ofRandom(ofGetHeight());
-    color = ofRandom(50,255);
+    color = ofColor(ofRandom(255),ofRandom(255),ofRandom(255),ofRandom(255));
+    color.setSaturation(50);
     radius = 3;
 }
 
