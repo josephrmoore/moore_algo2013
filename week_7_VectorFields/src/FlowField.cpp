@@ -82,6 +82,17 @@ void FlowField::setCorner(bool X, bool Y) {
     }
 }
 
+ofVec2f FlowField::getForceAtPosition(ofVec2f pos){
+    float pctX = pos.x/fieldWidth;
+    float pctY = pos.y/fieldHeight;
+    int cols = fieldWidth/resolution;
+    int rows = fieldHeight/resolution;
+    int xVal = ofClamp(pctX*cols, 0, cols-1);
+    int yVal = ofClamp(pctY*rows, 0, rows-1);
+    ofVec2f newpos;
+    newpos.set(flowList[yVal][xVal]);
+}
+
 
 void FlowField::draw() {
     for( int y=0; y<flowList.size(); y++){

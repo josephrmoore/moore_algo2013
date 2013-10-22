@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "FlowField.h"
 #include "ofxXmlSettings.h"
+#include "Particle.h"
 
 class testApp : public ofBaseApp{
 
@@ -24,4 +25,5 @@ class testApp : public ofBaseApp{
         FlowField myField;
         ofxXmlSettings xml;
         int state;
+        vector<Particle> ps;
 };

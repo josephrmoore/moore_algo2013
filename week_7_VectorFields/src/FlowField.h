@@ -28,4 +28,6 @@ public:
     
     vector<VectorList>  flowList;
     int                 fieldWidth, fieldHeight, resolution;
+    ofVec2f getForceAtPosition(ofVec2f pos);
+
 };

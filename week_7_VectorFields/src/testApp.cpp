@@ -26,16 +26,27 @@ void testApp::setup(){
     else if( state == 7 ){
         myField.setCorner(false,false);
     }
+    for(int i=0; i<1000; i++){
+        Particle p;
+        ps.push_back(p);
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    
+    for(int i=0; i<ps.size(); i++){
+        ps[i].addForce(myField.getForceAtPosition(ps[i].pos)*0.05);
+        ps[i].update();
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    ofSetColor(255);
     myField.draw();
+    for(int i=0; i<ps.size(); i++){
+        ps[i].draw(3);
+    }
 }
 
 //--------------------------------------------------------------
