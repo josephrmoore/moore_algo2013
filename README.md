@@ -52,3 +52,14 @@ SolitaireEndingAbstract - I think of it as Impressionist Rain
 Attraction - Use 1,2,3,4,5 to control the experience
 StrangeAttractorOwen - I didn't "do" this assignment as attempt to do a couple things and modified Owen's beautiful work
 
+Week 7:
+
+UndulatingCircles_Kim - I took Alberts circles sketch and tried to make a class out of it in the hopes of getting many undulating circles
+VectorFields - I used corners & sin for circles
+
+Week 8:
+
+Steering - I got many cars (kinda) avoiding each other and it looks suspiciously like flocking. However, if I make too many, they disappear into a black hole. Problem? 
+VectorFields1 - I copied your base code in and am not feeling inspired. Will work on later.
+VectorFields2 - Still blank. Again. Later. Sorry. Sleepy.
+
