@@ -40,17 +40,17 @@ void Particle::seek(ofVec2f dest, vector<Particle> ps) {
     if(desired.length() < slowdown){
         float mag = ofMap(desired.length(), 0, slowdown, 0, maxSpeed);
         desired.normalize();
-        for(int i=0; i<ps.size(); i++){
-            ofVec2f collision = ps[i].pos - pos;
-            if(collision.length() < slowdown){
-                ofVec2f flee = pos - collision;
-                mag = ofMap(flee.length(), 0, slowdown, 0, maxSpeed);
-//                desired *= -mag;
-//                desired.x *= ofRandom(-mag);
-//                desired.y *= ofRandom(-mag);                
-            }
-                desired *= mag;
-        }
+//        for(int i=0; i<ps.size(); i++){
+//            ofVec2f collision = ps[i].pos - pos;
+//            if(collision.length() < slowdown){
+//                ofVec2f flee = pos - collision;
+//                mag = ofMap(flee.length(), 0, slowdown, 0, maxSpeed);
+////                desired *= -mag;
+////                desired.x *= ofRandom(-mag);
+////                desired.y *= ofRandom(-mag);                
+//            }
+//        }
+        desired *= mag;
     } else {
         desired.normalize();
         desired *= maxSpeed;
@@ -67,6 +67,12 @@ void Particle::avoid(vector<Particle> ps) {
             
         }
     }
+}
+
+void Particle::addRepulsionForce(const ofVec2f &dest) {
+    ofVec2f diff = pos - dest;
+    float strength = 1- (diff.length()/200.0);
+    addForce(diff.normalize()*strength);
 }
 
 void Particle::update() {

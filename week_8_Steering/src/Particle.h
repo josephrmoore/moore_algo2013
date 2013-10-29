@@ -19,6 +19,7 @@ public:
     
     void setParams( float px, float py, float vx, float vy );
     void addForce( ofVec2f force );
+    void addRepulsionForce(const ofVec2f &dest);
     void addDampingForce();
     void resetForces();
     

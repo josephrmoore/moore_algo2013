@@ -63,3 +63,14 @@ Steering - I got many cars (kinda) avoiding each other and it looks suspiciously
 VectorFields1 - I copied your base code in and am not feeling inspired. Will work on later.
 VectorFields2 - Still blank. Again. Later. Sorry. Sleepy.
 
+Week 9:
+
+Non-code:
+
+WRITING/animation_videos.txt
+
+Code:
+
+Looping composition - I made a digital space and character for my thesis project and I chose to use it to embody some of these animation prinicples in my sprite. I used squash and stretch and also arc to swing the arms. I drew the bot once in illustrator for each direction, then copied it 8 times across to make 8 frames in the sprite for each direction for a total of 32 bots. I then changed each one in sequence to get the walk cycle I wanted. The image files are IMAGES/badideabot.png and IMAGES/badideabot.ai. You can see the animation live at http://badideabot.com/prototype2
+
+SquashNStretch - I got the suash and stretch going but it knocked the timing off the collision. I tried to use atan2 to rotate the particles toward the circle wall they collide with but i couldn't get the destination point correct.

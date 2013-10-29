@@ -8,7 +8,7 @@ void testApp::setup(){
 //    car.pos = ofVec2f(ofGetWidth()/2, ofGetHeight()/2);
 //    car.vel = ofVec2f(10, -5);
 //    ofSetBackgroundAuto(false);
-    for(int i=0; i<20; i++){
+    for(int i=0; i<5; i++){
         Particle p;
         p.pos = ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
         p.vel = ofVec2f(ofRandom(-10,10), ofRandom(-10,10));
@@ -23,9 +23,15 @@ void testApp::update(){
     for(int i=0; i< cars.size(); i++){
         cars[i].seek(dest, cars);
         cars[i].update();
-    }
-    if(car.pos.distance(dest)<5){
-        dest = ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
+        for(int j=0; j<cars.size();j++){
+            if(cars[i].pos.distance(cars[j].pos)<100){
+                cars[i].addRepulsionForce(cars[j].pos);
+                cars[j].addRepulsionForce(cars[i].pos);
+            }
+        }
+        if(cars[i].pos.distance(dest)<5){
+            dest = ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight()));
+        }
     }
 }
 
