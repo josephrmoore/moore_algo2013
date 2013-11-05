@@ -8,13 +8,18 @@
 
 #include "Particle.h"
 
-Particle::Particle() {
+Particle::Particle(ofFbo f) {
     setParams(0,0,0,0);
     damping = ofVec2f( 0.01f );
     color = ofColor(ofRandom(255), ofRandom(255));
     maxSpeed = 10.0;
     maxForce = 0.4;
     slowdown = 200.0;
+    person = ofRandom(1,5);
+    fbo = f;
+    for(int i=0; i<100; i++){
+        ghosts.push_back(ofVec2f(pos.x+ofRandom(-100,100), pos.y+ofRandom(-100,100)));
+    }
 }
 
 void Particle::setParams( float px, float py, float vx, float vy ){
@@ -78,25 +83,21 @@ void Particle::addRepulsionForce(const ofVec2f &dest) {
 void Particle::update() {
     vel = vel + frc;
     pos = pos + vel;
-    if(pos.x<0||pos.x>ofGetWidth()){
-        vel.x *=-1;
-    }
-    if(pos.y<0||pos.y>ofGetHeight()){
-        vel.y *=-1;
-    }
+//    if(pos.x<0||pos.x>ofGetWidth()){
+//        vel.x *=-1;
+//    }
+//    if(pos.y<0||pos.y>ofGetHeight()){
+//        vel.y *=-1;
+//    }
     frc.set(0);
+    
 }
 
 void Particle::draw() {
-//    ofSetColor(255);
-//    ofCircle(pos,3);
-
-    ofSetRectMode(OF_RECTMODE_CENTER);
     ofPushMatrix();
-    ofTranslate(pos);
-    float rot = atan2(vel.y,vel.x);
-    ofRotate(ofRadToDeg(rot)+90);
-    ofSetColor(255);
-    ofRect(0,0,20,40);
+    fbo.draw(pos.x,pos.y);
+    for(int i=0; i<ghosts.size(); i++){
+        fbo.draw(pos.x+ghosts[i].x, pos.y+ghosts[i].y);
+    }
     ofPopMatrix();
 }

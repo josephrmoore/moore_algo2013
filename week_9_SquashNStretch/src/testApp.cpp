@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     ofSetVerticalSync(true);
-    ofSetFrameRate(30);
+    ofSetFrameRate(60);
     ofBackground(0);
     ofSetCircleResolution(100);
     ofEnableSmoothing();

@@ -12,7 +12,7 @@
 
 class Particle {
 public:
-    Particle();
+    Particle(ofFbo f);
     
     void update();
     void draw();
@@ -34,4 +34,7 @@ public:
     void seek(ofVec2f dest, vector<Particle> ps);
     void avoid(vector<Particle> ps);
     float maxSpeed, maxForce, slowdown;
+    int person;
+    ofFbo fbo;
+    vector<ofVec2f> ghosts;
 };
