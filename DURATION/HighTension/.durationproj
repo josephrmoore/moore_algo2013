@@ -1,0 +1,52 @@
+<tracks>
+    <page>
+        <name>Page One</name>
+        <track>
+            <type>Audio</type>
+            <xmlFileName></xmlFileName>
+            <trackName>audio</trackName>
+            <displayName>hightension.wav</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
+            <clip>/Users/josephmoore/Desktop/hightension.wav</clip>
+        </track>
+        <track>
+            <type>Colors</type>
+            <xmlFileName>colors_.xml</xmlFileName>
+            <trackName>colors</trackName>
+            <displayName>colors</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>0</receiveOSC>
+            <palette>/Users/josephmoore/Desktop/joffreyscoffee.jpg</palette>
+        </track>
+        <track>
+            <type>Curves</type>
+            <xmlFileName>curves_.xml</xmlFileName>
+            <trackName>curves</trackName>
+            <displayName>curves</displayName>
+            <sendOSC>1</sendOSC>
+            <receiveOSC>1</receiveOSC>
+            <min>-195.000000000</min>
+            <max>701.000000000</max>
+        </track>
+    </page>
+</tracks>
+<timelineSettings>
+    <duration>00:00:09:919</duration>
+    <playhead>00:00:03:649</playhead>
+    <inpoint>00:00:00:000</inpoint>
+    <outpoint>00:00:09:919</outpoint>
+    <loop>1</loop>
+</timelineSettings>
+<projectSettings>
+    <useBPM>0</useBPM>
+    <bpm>120.000000000</bpm>
+    <snapToBPM>1</snapToBPM>
+    <snapToKeys>0</snapToKeys>
+    <oscInEnabled>1</oscInEnabled>
+    <oscOutEnabled>1</oscOutEnabled>
+    <oscInPort>12346</oscInPort>
+    <oscIP>localhost</oscIP>
+    <oscOutPort>12345</oscOutPort>
+    <oscRate>30.000000000</oscRate>
+</projectSettings>

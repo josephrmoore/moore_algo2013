@@ -80,3 +80,10 @@ Week 10:
 
 Million Particle Summer
 Timestep Abstract Solitaire
+
+Week 11:
+
+Duration Project is in the DURATION folder. oF project that goes with it labelled "week_11_Duration". This is the Advanced version, i did multiples from the getgo.
+OSC projects are "week_11_OSCReceiver1", "week_11_OSCSender2", "week_11_OSCSender3", "week_11_OSCSender4".
+
+Week 12:

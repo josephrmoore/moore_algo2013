@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>19EDF2F6-33C1-43E1-9973-74FD59F9BAF6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Duration</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4731EC5F-E000-4995-A8A2-DFCA00C30130</key>
+		<string>ssh://github.com/josephrmoore/moore_algo2013.git</string>
+		<key>9797FF0B-F6B5-40C9-A367-984C06CCA8B6</key>
+		<string>ssh://github.com/kylemcdonald/ofxFft.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>week_11_Duration/Duration.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4731EC5F-E000-4995-A8A2-DFCA00C30130</key>
+		<string>../../..</string>
+		<key>9797FF0B-F6B5-40C9-A367-984C06CCA8B6</key>
+		<string>../../../../../addons/ofxFft</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/josephrmoore/moore_algo2013.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4731EC5F-E000-4995-A8A2-DFCA00C30130</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4731EC5F-E000-4995-A8A2-DFCA00C30130</string>
+			<key>IDESourceControlWCCName</key>
+			<string>moore_algo2013</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9797FF0B-F6B5-40C9-A367-984C06CCA8B6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxFft</string>
+		</dict>
+	</array>
+</dict>
+</plist>
