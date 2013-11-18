@@ -87,3 +87,8 @@ Duration Project is in the DURATION folder. oF project that goes with it labelle
 OSC projects are "week_11_OSCReceiver1", "week_11_OSCSender2", "week_11_OSCSender3", "week_11_OSCSender4".
 
 Week 12:
+
+Project URL: http://sodaplay.com/creators/joseph_moore/items/walker4
+Video documentation: VIDEOS/walker.mov
+
+Final Project Idea: Going with a game called Hungry Boids. Knock over the city with a flock of monsters eating bait you drop from the sky. I'm going to hand design a few levels, but with an eye to allowing for algorithmic level creation as well. If I can get the basic game and 3 levels I'll call it a success. 
