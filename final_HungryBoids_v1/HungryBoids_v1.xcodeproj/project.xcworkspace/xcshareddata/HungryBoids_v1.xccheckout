@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C7E9ADBE-8F3D-41A9-97CD-AA6A7D4CFE33</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HungryBoids_v1</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4B715FCE-75E9-46C0-9561-118E7014BFAA</key>
+		<string>ssh://github.com/rezaali/ofxUI.git</string>
+		<key>E81B2677-D709-4C69-94CF-B2DEFA7B98EF</key>
+		<string>ssh://github.com/josephrmoore/moore_algo2013.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HungryBoids_v1/HungryBoids_v1.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4B715FCE-75E9-46C0-9561-118E7014BFAA</key>
+		<string>../../../../../addons/ofxUI</string>
+		<key>E81B2677-D709-4C69-94CF-B2DEFA7B98EF</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/josephrmoore/moore_algo2013.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E81B2677-D709-4C69-94CF-B2DEFA7B98EF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E81B2677-D709-4C69-94CF-B2DEFA7B98EF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>moore_algo2013</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4B715FCE-75E9-46C0-9561-118E7014BFAA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxUI</string>
+		</dict>
+	</array>
+</dict>
+</plist>
