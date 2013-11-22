@@ -60,7 +60,7 @@ void Level::draw(){
         bricks[i].draw();
     }
     ofPushMatrix();{
-        ofTranslate( ofGetWindowSize() / 2.0 );
+//        ofTranslate( ofGetWindowSize() / 2.0 );
         flocker.draw();
     }ofPopMatrix();
 //    flocker.draw();

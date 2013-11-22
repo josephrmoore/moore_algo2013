@@ -8,21 +8,21 @@
 
 #include "Boid.h"
 
-Boid::Boid( ofVec3f position, ofVec3f velocity) {
+Boid::Boid( ofVec2f position, ofVec2f velocity) {
     pos = position;
     vel = velocity;
     damping = 0.98;
 }
 
-void Boid::applyForce( ofVec3f force ){
+void Boid::applyForce( ofVec2f force ){
     acc += force;
 }
 
-void Boid::pullToCenter( ofVec3f center ){
+void Boid::pullToCenter( ofVec2f center ){
     
     // if the particles stray too far, we want to pull them back on screen
     
-    ofVec3f dir = pos - center;
+    ofVec2f dir = pos - center;
     float dist = dir.length();
     float maxDistance = 300.0;
     
@@ -48,14 +48,13 @@ void Boid::update(){
     vel *= damping;
     
     acc.set(0);
+    setVelocity(vel);
+    setPosition(pos);
 }
 
-void Boid::draw(){
-    ofPushStyle();
-        ofSetColor(255);
-        ofCircle(pos, 4);
-    ofPopStyle();
-//    ofSetColor( 255, 0, 0 );
-//    ofLine( pos, pos - vel*5.0);
-    
-}
+//void Boid::draw(){
+//    ofPushStyle();
+//        ofSetColor(255);
+//        ofCircle(pos, 4);
+//    ofPopStyle();
+//}

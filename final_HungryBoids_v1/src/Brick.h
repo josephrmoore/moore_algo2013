@@ -9,10 +9,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxBox2d.h"
 
-class Brick {
+class Brick : public ofxBox2dRect {
 public:
-    Brick();
-    void update();
-    void draw();
+
 };

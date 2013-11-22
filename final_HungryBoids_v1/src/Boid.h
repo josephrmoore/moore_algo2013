@@ -13,14 +13,15 @@
 
 class Boid : public ofxBox2dCircle {
 public:
-    Boid( ofVec3f position, ofVec3f velocity );
+    typedef ofxBox2dCircle super;
+    Boid( ofVec2f position, ofVec2f velocity );
     
-    void applyForce( ofVec3f force );
-    void pullToCenter( ofVec3f center );
+    void applyForce( ofVec2f force );
+    void pullToCenter( ofVec2f center );
     
     void update();
-    void draw();
+//    void draw();
     
     float   damping;
-    ofVec3f pos, vel, acc;
+    ofVec2f pos, vel, acc;
 };

@@ -24,7 +24,7 @@ public:
     void gotMessage(ofMessage msg);
     Level level;
     ofxBox2d box;
-    vector<ofxBox2dRect> boxes;
+    vector<Brick> boxes;
     
     void makeShape(int type, float x=ofGetWidth()/2, float y=ofGetHeight()/2);
     ofEasyCam cam;

@@ -7,7 +7,6 @@ void testApp::setup(){
 	box.setFPS(30.0);
     box.createGround();
     box.enableGrabbing();
-    cout<<&box<<endl;
     level.setup(box.getWorld());
 }
 
@@ -48,7 +47,7 @@ void testApp::makeShape(int type, float x, float y){
     } else {
         return;
     }
-    ofxBox2dRect r;
+    Brick r;
     r.setPhysics(3.0, 0.53, 0.1);
     r.setup(box.getWorld(), x, y, w, h);
     boxes.push_back(r);

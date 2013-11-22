@@ -27,13 +27,13 @@ void FlockController::addParticle( b2World* _box, int numParticles ){
 		float y = rho * sin( phi );
 		float z = costheta;
 		
-        ofVec3f randVec(x, y, z);
+        ofVec2f randVec(x, y);
         
-		ofVec3f pos = randVec * ofRandom( 100.0f, 600.0f );
-		ofVec3f vel = -randVec;
+		ofVec2f pos = randVec * ofRandom( 100.0f, 600.0f );
+		ofVec2f vel = -randVec;
         
         Boid b( pos, vel );
-        b.setPhysics(3.0, 0.53, 0.1);
+        b.setPhysics(0.0, 0.53, 0.1);
         b.setup(_box, pos.x, pos.y, 4);
         boidList.push_back( b );
     }
@@ -41,7 +41,7 @@ void FlockController::addParticle( b2World* _box, int numParticles ){
 
 void FlockController::applyForces( float zoneRadius, float separateThresh, float alignThresh) {
     float zoneRadiusSq = zoneRadius * zoneRadius;
-    
+    float scale = 1.0;
     for( vector<Boid>::iterator b1=boidList.begin(); b1!=boidList.end(); ++b1 ){
         
         vector<Boid>::iterator b2 = b1 + 1;
@@ -65,11 +65,11 @@ void FlockController::applyForces( float zoneRadius, float separateThresh, float
                     
                     float adjustedPct = 1.0 - ofMap(pct, 0.0, separateThresh, 0.0, 1.0);
                     ofVec2f force = dir.normalized() * adjustedPct * 0.03;
-                    b1->applyForce( force );
-                    b2->applyForce( -force );
+                    b1->addForce(force, scale);
+                    b2->addForce( -force, scale );
                     
                     //                    float F = ( separateThresh/pct - 1.0f ) * 0.01;
-                    //					ofVec3f force = dir.normalized() * F;
+                    //					ofVec2f force = dir.normalized() * F;
                     //					b1->applyForce( force );
                     //					b2->applyForce( -force );
                 }
@@ -81,8 +81,8 @@ void FlockController::applyForces( float zoneRadius, float separateThresh, float
                     
                     //					float F					= ( 1.0f - ( cos( str * TWO_PI ) * -0.5f + 0.5f ) ) * 0.005;
                     
-                    b1->applyForce( b2->vel.normalized() * F );
-                    b2->applyForce( b1->vel.normalized() * F );
+                    b1->addForce( b2->vel.normalized() * F, scale );
+                    b2->addForce( b1->vel.normalized() * F, scale );
                 }
                 
                 // cohesion - The boids are just a little too far from each other.  Apply an attraction force to bring them together.
@@ -91,8 +91,8 @@ void FlockController::applyForces( float zoneRadius, float separateThresh, float
                     
                     float adjustedPct = ofMap(pct, alignThresh, 1.0f, 0.0f, 1.0f);
                     ofVec2f force = dir.normalized() * adjustedPct * attractStrength;
-                    b1->applyForce( -force );
-                    b2->applyForce( force );
+                    b1->addForce( -force,  scale);
+                    b2->addForce( force, scale);
                     
                     //                    float threshDelta		= 1.0f - alignThresh;
                     //					float adjustedPercent	= ( pct - alignThresh )/threshDelta;
@@ -108,7 +108,7 @@ void FlockController::applyForces( float zoneRadius, float separateThresh, float
             
         }
         
-        b1->pullToCenter( ofVec3f(x,y,0) );
+        b1->pullToCenter( ofVec2f(x,y) );
     }
 }
 
