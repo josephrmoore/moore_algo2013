@@ -9,21 +9,35 @@
 #include "Level.h"
 
 Level::Level(){
-    
+
+}
+
+void Level::setup(b2World* _box){
+//    box = _box;
+//    for(int i=0; i<10; i++){
+//        Brick b(box);
+//        bricks.push_back(b);
+//    }
+    flocker.addParticle( _box, 100 );
 }
 
 void Level::load(int level){
     if(level == 1){
         // precise placement of each brick instead of loop?
-        for(int i=0; i<10; i++){
-            Brick b;
-            bricks.push_back(b);
-        }
+
         copter.base_speed = 3;
         copter.baits = 3;
-        
+        square20 = 4;
+        square40 = 2;
+        rect200x20 = 2;
+        rect20x200 = 4;
     } else if (level == 2){
-        
+        copter.base_speed = 4;
+        copter.baits = 4;
+        square20 = 2;
+        square40 = 4;
+        rect200x20 = 1;
+        rect20x200 = 2;
     } else if (level == 3){
         
     } else {
@@ -36,8 +50,8 @@ void Level::update(){
     for(int i=0; i<bricks.size(); i++){
         bricks[i].update();
     }
-    flocker.applyForces(80, 0.4, 0.75);
     flocker.update();
+    flocker.applyForces(80, 0.4, 0.75);
 }
 
 void Level::draw(){
@@ -45,5 +59,9 @@ void Level::draw(){
     for(int i=0; i<bricks.size(); i++){
         bricks[i].draw();
     }
-    flocker.draw();
+    ofPushMatrix();{
+        ofTranslate( ofGetWindowSize() / 2.0 );
+        flocker.draw();
+    }ofPopMatrix();
+//    flocker.draw();
 }

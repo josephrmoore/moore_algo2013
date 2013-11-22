@@ -17,9 +17,11 @@ public:
     
     void applyForces( float zoneRadius, float separateThresh=0.4, float alignThresh=0.7 );
     
-    void addParticle( int numParticles=1 );
+    void addParticle(b2World* _box, int numParticles=1 );
     void update();
+    void setup();
     void draw();
     
     vector<Boid>    boidList;
+    float x, y;
 };

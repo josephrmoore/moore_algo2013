@@ -23,4 +23,9 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     Level level;
+    ofxBox2d box;
+    vector<ofxBox2dRect> boxes;
+    
+    void makeShape(int type, float x=ofGetWidth()/2, float y=ofGetHeight()/2);
+    ofEasyCam cam;
 };

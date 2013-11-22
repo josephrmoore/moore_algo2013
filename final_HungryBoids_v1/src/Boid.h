@@ -9,10 +9,10 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxBox2d.h"
 
-class Boid {
+class Boid : public ofxBox2dCircle {
 public:
-    Boid();
     Boid( ofVec3f position, ofVec3f velocity );
     
     void applyForce( ofVec3f force );

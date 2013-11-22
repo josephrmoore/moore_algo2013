@@ -11,7 +11,11 @@
 FlockController::FlockController(){
 }
 
-void FlockController::addParticle( int numParticles ){
+void FlockController::setup(){
+}
+
+
+void FlockController::addParticle( b2World* _box, int numParticles ){
     for( int i=0; i<numParticles; i++ ){
         
         // I was getting bad results, so I looked up uniform sphere distribution and got this: http://mathworld.wolfram.com/SpherePointPicking.html
@@ -29,6 +33,8 @@ void FlockController::addParticle( int numParticles ){
 		ofVec3f vel = -randVec;
         
         Boid b( pos, vel );
+        b.setPhysics(3.0, 0.53, 0.1);
+        b.setup(_box, pos.x, pos.y, 4);
         boidList.push_back( b );
     }
 }
@@ -102,7 +108,7 @@ void FlockController::applyForces( float zoneRadius, float separateThresh, float
             
         }
         
-        b1->pullToCenter( ofVec3f(0,0,0) );
+        b1->pullToCenter( ofVec3f(x,y,0) );
     }
 }
 
