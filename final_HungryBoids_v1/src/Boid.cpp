@@ -12,6 +12,7 @@ Boid::Boid( ofVec2f position, ofVec2f velocity) {
     pos = position;
     vel = velocity;
     damping = 0.98;
+    setDamping(damping);
 }
 
 void Boid::applyForce( ofVec2f force ){
@@ -24,7 +25,7 @@ void Boid::pullToCenter( ofVec2f center ){
     
     ofVec2f dir = pos - center;
     float dist = dir.length();
-    float maxDistance = 300.0;
+    float maxDistance = 100.0;
     
     if( dir.length() > maxDistance ) {
         dir.normalize();
@@ -34,10 +35,12 @@ void Boid::pullToCenter( ofVec2f center ){
 
 void Boid::update(){
 
+//    vel += getVelocity();
+//    vel += getPosition();
     vel += acc;
     
     // don't move too fast
-    vel.limit(3.0);
+    vel.limit(10.0);
     
     // but also don't move too slow!
     if( vel.lengthSquared() < 1.0 ){
@@ -45,7 +48,6 @@ void Boid::update(){
     }
     
     pos += vel;
-    vel *= damping;
     
     acc.set(0);
     setVelocity(vel);

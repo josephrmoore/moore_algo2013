@@ -8,6 +8,9 @@ void testApp::setup(){
     box.createGround();
     box.enableGrabbing();
     level.setup(box.getWorld());
+    center.set(ofGetWidth()/2,ofGetHeight()/2);
+    level.flocker.x = center.x;
+    level.flocker.y = center.y;
 }
 
 //--------------------------------------------------------------
@@ -24,6 +27,10 @@ void testApp::draw(){
         boxes[i].draw();
     }
 //    cam.end();
+    ofPushStyle();
+    ofSetColor(255,0,0);
+    ofCircle(center,sin(ofGetElapsedTimef())*2+7);
+    ofPopStyle();
 }
 
 void testApp::makeShape(int type, float x, float y){
@@ -105,8 +112,7 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y ){
-    level.flocker.x = x;
-    level.flocker.y = y;
+
 }
 
 //--------------------------------------------------------------
@@ -116,7 +122,10 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-
+    center.set(x,y);
+    level.flocker.x = center.x;
+    level.flocker.y = center.y;
+    
 }
 
 //--------------------------------------------------------------
