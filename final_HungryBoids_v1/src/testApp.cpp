@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     box.init();
-	box.setGravity(0, 10);
+	box.setGravity(0, 5);
 	box.setFPS(30.0);
     box.createGround();
     box.enableGrabbing();
@@ -11,12 +11,20 @@ void testApp::setup(){
     center.set(ofGetWidth()/2,ofGetHeight()/2);
     level.flocker.x = center.x;
     level.flocker.y = center.y;
+    bait.setup2();
+    bait.setPhysics(9.0, 0.01, 0.001);
+    bait.setup(box.getWorld(), 0, 0, 10);
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     box.update();
     level.update();
+    bait.update();
+    level.flocker.x = bait.pos.x;
+    level.flocker.y = bait.pos.y;
+    b2World* b = box.getWorld();
+//    b->Step(0.0001, 0.0001, 0.0001);
 }
 
 //--------------------------------------------------------------
@@ -27,10 +35,9 @@ void testApp::draw(){
         boxes[i].draw();
     }
 //    cam.end();
-    ofPushStyle();
-    ofSetColor(255,0,0);
-    ofCircle(center,sin(ofGetElapsedTimef())*2+7);
-    ofPopStyle();
+    if(!bait.eaten){
+        bait.draw();
+    }
 }
 
 void testApp::makeShape(int type, float x, float y){
@@ -123,9 +130,7 @@ void testApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
     center.set(x,y);
-    level.flocker.x = center.x;
-    level.flocker.y = center.y;
-    
+    bait.drop(center);
 }
 
 //--------------------------------------------------------------

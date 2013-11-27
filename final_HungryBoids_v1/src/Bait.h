@@ -9,8 +9,14 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxBox2d.h"
 
-class Bait {
+class Bait : public ofxBox2dCircle {
 public:
-    
+    float timer, lifetime;
+    bool eaten;
+    ofVec2f pos;
+    void drop(ofVec2f pos);
+    void setup2();
+    void update();
 };

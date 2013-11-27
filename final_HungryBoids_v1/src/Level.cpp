@@ -50,8 +50,8 @@ void Level::update(){
     for(int i=0; i<bricks.size(); i++){
         bricks[i].update();
     }
-    flocker.update();
     flocker.applyForces(80, 0.4, 0.75);
+    flocker.update();
 }
 
 void Level::draw(){

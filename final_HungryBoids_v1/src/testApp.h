@@ -29,4 +29,5 @@ public:
     void makeShape(int type, float x=ofGetWidth()/2, float y=ofGetHeight()/2);
     ofEasyCam cam;
     ofVec2f center;
+    Bait bait;
 };
