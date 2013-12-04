@@ -19,12 +19,17 @@ void Rhythm::setTempo(float _tempo){
 }
 
 void Rhythm::record(){
-    double hit = ofGetElapsedTimeMillis();
-    float note = hit-t.start;
-    values.push_back(note);
+    Note n;
+    notes.push_back(n);
 }
+
 void Rhythm::play(){
-    
+    for( vector<Note>::iterator it=notes.begin(); it!=notes.end(); it++ ){
+        if(t.current-t.start >= it->time && it->played==false){
+            it->play();
+            it->played = true;
+        }
+    }
 }
 void Rhythm::update(){
     t.update();

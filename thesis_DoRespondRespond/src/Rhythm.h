@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "Timer.h"
+#include "Note.h"
 
 class Rhythm {
     
@@ -20,7 +21,7 @@ public:
     void play();
     void update();
     void setTempo(float _tempo);
-    vector<float> values;
+    vector<Note> notes;
     Timer t;
     float tempo;
 };

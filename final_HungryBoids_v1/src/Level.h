@@ -23,9 +23,12 @@ public:
     vector<Bait> bait_drops;
     vector<Brick> bricks;
     void load(int level);
-    
+    int level;
     void setup(b2World* world);
     void update();
     void draw();
     int square20, square40, rect200x20, rect20x200;
+    float height;
+    double start;
+    float timelimit;
 };

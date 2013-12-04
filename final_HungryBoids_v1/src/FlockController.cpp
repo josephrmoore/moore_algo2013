@@ -34,8 +34,8 @@ void FlockController::addParticle( b2World* _box, int numParticles ){
         
         Boid b( pos, vel );
         b.enableGravity(false);
-        b.setPhysics(1.0, 1.0, 1.0);
-        b.setup(_box, pos.x, pos.y, 4);
+        b.setPhysics(0.1, 1.0, 1.0);
+        b.setup(_box, pos.x-800, pos.y, 4);
         boidList.push_back( b );
     }
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F66F0C70-08E3-40FA-BBFF-EB11E8637549</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DoRespondRespond</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3861A24F-E695-4C56-B1E2-FD55BC0DCBF0</key>
+		<string>ssh://github.com/josephrmoore/moore_algo2013.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>thesis_DoRespondRespond/DoRespondRespond.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3861A24F-E695-4C56-B1E2-FD55BC0DCBF0</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/josephrmoore/moore_algo2013.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3861A24F-E695-4C56-B1E2-FD55BC0DCBF0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3861A24F-E695-4C56-B1E2-FD55BC0DCBF0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>moore_algo2013</string>
+		</dict>
+	</array>
+</dict>
+</plist>

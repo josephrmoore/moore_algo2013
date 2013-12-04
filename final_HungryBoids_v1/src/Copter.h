@@ -11,11 +11,15 @@
 #include "ofMain.h"
 #include "Bait.h"
 
-class Copter {
+class Copter : public ofxBox2dRect {
 public:
     Copter();
     void update();
     void draw();
-    float base_speed, current_speed, stability, damage;
+    void drop();
+    void think();
+    float speed, stability, damage;
     int  baits;
+    ofVec2f pos, vel, acc;
+    Bait bait;
 };

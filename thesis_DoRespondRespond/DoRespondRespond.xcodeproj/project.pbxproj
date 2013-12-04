@@ -11,6 +11,7 @@
 		3337579C18466C9700450FA3 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3337579A18466C9700450FA3 /* Timer.cpp */; };
 		3342EF551846812B00021B3C /* Rhythm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3342EF531846812B00021B3C /* Rhythm.cpp */; };
 		3342EF5918468C5100021B3C /* Note.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3342EF5718468C5100021B3C /* Note.cpp */; };
+		334B8EB61846AFC100B99509 /* Loop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 334B8EB41846AFC100B99509 /* Loop.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -72,6 +73,8 @@
 		3342EF541846812B00021B3C /* Rhythm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rhythm.h; sourceTree = "<group>"; };
 		3342EF5718468C5100021B3C /* Note.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Note.cpp; sourceTree = "<group>"; };
 		3342EF5818468C5100021B3C /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		334B8EB41846AFC100B99509 /* Loop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loop.cpp; sourceTree = "<group>"; };
+		334B8EB51846AFC100B99509 /* Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loop.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -200,6 +203,8 @@
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				3337579718466C6A00450FA3 /* Player.cpp */,
+				334B8EB41846AFC100B99509 /* Loop.cpp */,
+				334B8EB51846AFC100B99509 /* Loop.h */,
 				3337579818466C6A00450FA3 /* Player.h */,
 				3337579A18466C9700450FA3 /* Timer.cpp */,
 				3337579B18466C9700450FA3 /* Timer.h */,
@@ -307,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				334B8EB61846AFC100B99509 /* Loop.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				3337579918466C6A00450FA3 /* Player.cpp in Sources */,

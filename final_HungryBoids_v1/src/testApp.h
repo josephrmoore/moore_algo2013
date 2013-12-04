@@ -26,8 +26,7 @@ public:
     ofxBox2d box;
     vector<Brick> boxes;
     
-    void makeShape(int type, float x=ofGetWidth()/2, float y=ofGetHeight()/2);
+    void makeShape(float x=ofGetWidth()/2, float y=ofGetHeight()/2, float w=40, float h=40);
     ofEasyCam cam;
     ofVec2f center;
-    Bait bait;
 };

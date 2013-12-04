@@ -38,25 +38,23 @@ void Boid::pullToCenter( ofVec2f center ){
 
 void Boid::update(){
     
-//    pos = getPosition();
+    pos = getPosition();
 ////    vel += getVelocity();
 ////    vel += getPosition();
     vel += acc;
 //
     // don't move too fast
-    vel.limit(5.0);
+    vel.limit(8.0);
 
     // but also don't move too slow!
     if( vel.lengthSquared() < 1.0 ){
         vel = vel.normalized() * 1.0;
     }
     setVelocity(vel.x, vel.y);
-//    pos += vel;
+    pos += vel;
+    setPosition(pos.x, pos.y);
 //
     acc.set(0);
-    cout<<getPosition()<<endl;
-    cout<<getVelocity()<<endl;
-    cout<<vel<<endl;
 //    setPosition(pos);
 }
 
