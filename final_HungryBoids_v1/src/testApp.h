@@ -6,6 +6,8 @@
 #include "ofxUI.h"
 #include "ofxXmlSettings.h"
 
+#define B2D 0.5
+
 class testApp : public ofBaseApp{
 
 public:
@@ -26,7 +28,10 @@ public:
     ofxBox2d box;
     vector<Brick> boxes;
     
-    void makeShape(float x=ofGetWidth()/2, float y=ofGetHeight()/2, float w=40, float h=40);
+    void makeShape(float x=ofGetWidth()/2, float y=ofGetHeight()/2, float w=100, float h=100);
     ofEasyCam cam;
     ofVec2f center;
+    
+    bool checkBricks();
+    
 };

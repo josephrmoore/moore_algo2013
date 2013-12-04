@@ -23,12 +23,18 @@ public:
     vector<Bait> bait_drops;
     vector<Brick> bricks;
     void load(int level);
-    int level;
+    int level; // -2=lose, -1=win, 0=title, 1->n=level
     void setup(b2World* world);
-    void update();
+    void update(bool bricks);
     void draw();
     int square20, square40, rect200x20, rect20x200;
     float height;
     double start;
     float timelimit;
+
+    void title();
+    void win();
+    void lose();
+    void checkWin(bool _bricks);
+    bool won;
 };
