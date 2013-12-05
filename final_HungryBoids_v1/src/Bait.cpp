@@ -11,6 +11,8 @@
 void Bait::setup2(){
     lifetime = 1;
     eaten = true;
+    img.loadImage("baitball.png");
+    radius = 100.0;
 }
 
 void Bait::drop(ofVec2f _pos){
@@ -34,6 +36,27 @@ void Bait::update(){
     if(eaten){
         pos = ofVec2f(-ofGetWidth(), -ofGetHeight());
     } else {
-        setRadius(10-((ofGetElapsedTimeMillis()-timer)/lifetime*10.0));
+        setRadius(radius/2-((ofGetElapsedTimeMillis()-timer)/lifetime*radius/2));
     }
+}
+
+void Bait::draw(){
+	if(!isBody()) return;
+	ofPushMatrix();
+	ofTranslate(getPosition().x, getPosition().y, 0);
+	ofRotate(getRotation(), 0, 0, 1);
+//    ofCircle(0, 0, getRadius());
+    ofPushStyle();
+    ofSetRectMode(OF_RECTMODE_CENTER);
+    img.draw(ofVec2f(-90,-90), getRadius()*2,getRadius()*2);
+    ofEnableAlphaBlending();
+    ofSetColor(0);
+    //	ofLine(0, 0, radius, 0);
+    if(isSleeping()) {
+        ofSetColor(255, 100);
+        ofCircle(0, 0, getRadius());
+    }
+    ofPopStyle();
+    
+	ofPopMatrix();
 }

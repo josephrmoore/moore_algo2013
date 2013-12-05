@@ -18,6 +18,7 @@ void Level::setup(b2World* _box){
 //        Brick b(box);
 //        bricks.push_back(b);
 //    }
+    bk.loadImage("bk.jpg");
     flocker.addParticle( _box, 100 );
     timelimit = 30000;
     level = 0;
@@ -109,9 +110,10 @@ void Level::title(){
 
 void Level::draw(){
     if(level>0 && !won){
+        bk.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
         // height line
         ofPushStyle();
-        ofSetColor(0);
+        ofSetColor(255);
         string info = "";
         info += ofToString(height);
         info += " feet";
@@ -120,8 +122,8 @@ void Level::draw(){
         ofPopStyle();
         // timer countdown
         ofPushStyle();
-        ofSetColor(0);
-        ofDrawBitmapString(ofToString((timelimit-(ofGetElapsedTimeMillis()-start))/1000), 400, 200);
+        ofSetColor(255);
+        ofDrawBitmapString(ofToString((timelimit-(ofGetElapsedTimeMillis()-start))/1000), 900, 20);
         ofPopStyle();
         // copter
         copter.draw();
@@ -145,5 +147,9 @@ void Level::draw(){
     } else if (level == -1){
         lose();
     }
+    
+}
+
+void Level::reset(){
     
 }

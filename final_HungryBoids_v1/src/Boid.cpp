@@ -15,6 +15,7 @@ Boid::Boid( ofVec2f position, ofVec2f velocity) {
     setVelocity(vel);
     damping = 0.98;
     setDamping(damping);
+    boid.loadImage("boid.png");
 }
 
 void Boid::applyForce( ofVec2f force ){
@@ -58,9 +59,23 @@ void Boid::update(){
 //    setPosition(pos);
 }
 
-//void Boid::draw(){
-//    ofPushStyle();
-//        ofSetColor(255);
-//        ofCircle(pos, 4);
-//    ofPopStyle();
-//}
+void Boid::draw(){
+	if(!isBody()) return;
+	
+	ofPushMatrix();
+	ofTranslate(getPosition().x, getPosition().y, 0);
+	ofRotate(getRotation(), 0, 0, 1);
+//	ofCircle(0, 0, getRadius());
+    boid.draw(ofVec2f(0,0), 30, 30);
+    ofPushStyle();
+    ofEnableAlphaBlending();
+    ofSetColor(0);
+    //	ofLine(0, 0, radius, 0);
+    if(isSleeping()) {
+        ofSetColor(255, 100);
+        ofCircle(0, 0, getRadius());
+    }
+    ofPopStyle();
+    
+	ofPopMatrix();
+}

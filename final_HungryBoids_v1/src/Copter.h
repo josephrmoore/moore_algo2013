@@ -22,4 +22,5 @@ public:
     int  baits;
     ofVec2f pos, vel, acc;
     Bait bait;
+    ofImage skin;
 };

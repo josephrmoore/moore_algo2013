@@ -14,6 +14,7 @@ Copter::Copter(){
     vel.set(speed,1);
     baits = 3;
     bait.setup2();
+    skin.loadImage("copter.gif");
 }
 
 void Copter::update(){
@@ -21,7 +22,8 @@ void Copter::update(){
     pos.y = sin(ofGetElapsedTimeMillis()/(600.0/speed))*30.0 + 30.0;
 }
 void Copter::draw(){
-    ofRect(pos.x, pos.y, 40, 20);
+//    ofRect(pos.x, pos.y, 40, 20);
+    skin.draw(pos, 80, 50);
     ofPushStyle();
     ofSetColor(0);
     ofDrawBitmapString(ofToString(baits), pos.x+15, pos.y+15);

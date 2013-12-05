@@ -20,8 +20,9 @@ public:
     void pullToCenter( ofVec2f center );
     
     void update();
-//    void draw();
+    void draw();
     
     float   damping;
     ofVec2f pos, vel, acc;
+    ofImage boid;
 };

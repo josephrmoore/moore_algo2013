@@ -13,10 +13,12 @@
 
 class Bait : public ofxBox2dCircle {
 public:
-    float timer, lifetime;
+    float timer, lifetime, radius;
     bool eaten;
     ofVec2f pos;
     void drop(ofVec2f pos);
     void setup2();
     void update();
+    void draw();
+    ofImage img;
 };

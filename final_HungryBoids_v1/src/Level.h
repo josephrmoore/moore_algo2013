@@ -37,4 +37,6 @@ public:
     void lose();
     void checkWin(bool _bricks);
     bool won;
+    void reset();
+    ofImage bk;
 };

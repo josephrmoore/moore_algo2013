@@ -13,5 +13,7 @@
 
 class Brick : public ofxBox2dRect {
 public:
-
+    Brick();
+    void draw();
+    ofImage img;
 };

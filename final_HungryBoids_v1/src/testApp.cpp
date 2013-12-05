@@ -30,11 +30,13 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     level.draw();
-    for(int i=0; i<boxes.size(); i++){
-        boxes[i].draw();
-    }
-    if(!level.copter.bait.eaten){
-        level.copter.bait.draw();
+    if(level.level>0  && !level.won){
+        for(int i=0; i<boxes.size(); i++){
+            boxes[i].draw();
+        }
+        if(!level.copter.bait.eaten){
+            level.copter.bait.draw();
+        }
     }
 }
 

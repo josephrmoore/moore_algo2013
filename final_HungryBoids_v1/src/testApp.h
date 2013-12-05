@@ -33,5 +33,4 @@ public:
     ofVec2f center;
     
     bool checkBricks();
-    
 };
