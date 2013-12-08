@@ -293,17 +293,16 @@ int testApp::getKeys(float time, vector<TimePoint> t){
 	for (int i = 0; i < t.size()-1; i++){
         // find out which two points we're between
 		if (time >= t[i].t && time < t[i+1].t){
-			
+            index = i;
 			// Since we want a smooth playback, we'll interpolate between these two points
-			float part = time - t[i].t;
-			float whole = t[i+1].t - t[i].t;
-			float pct = part / whole;
+//			float part = time - t[i].t;
+//			float whole = t[i+1].t - t[i].t;
+//			float pct = part / whole;
 			// Figure out where we are between a and b
             // We've done this before with our linear interpolation where we take a percentage of both, where both
             // percentages add up to 100.  We do this by taking "pct" from one of them and "1-pct" from the other.
 //			pos.x = (1-pct) * t[i].x + (pct) * t[i+1].x;
 //			pos.y = (1-pct) * t[i].y + (pct) * t[i+1].y;
-            index = floor(pct*t.size());
 		}
         cout<<index<<endl;
 	}
