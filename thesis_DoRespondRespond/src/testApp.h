@@ -4,6 +4,8 @@
 #include "Timer.h"
 #include "Player.h"
 #include "TimePoint.h"
+#include "ofxMidi.h"
+
 
 class testApp : public ofBaseApp{
 
@@ -11,6 +13,7 @@ public:
     void setup();
     void update();
     void draw();
+    void exit();
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -36,4 +39,11 @@ public:
     int loop_counter;
     const int TOTAL_LOOPS = 8;
     vector <TimePoint> temp;
+    
+    ofxMidiOut midiOut;
+	int channel;
+	
+	unsigned int currentPgm;
+	int note, velocity;
+	int pan, bend, touch, polytouch;
 };

@@ -23,4 +23,5 @@ public:
     float x, y;
     float t;
     int key;
+    bool played=false;
 };

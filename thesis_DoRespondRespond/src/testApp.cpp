@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    t.setLimit(1100);
+    t.setLimit(2000);
     ofBackground(0);
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
@@ -15,7 +15,35 @@ void testApp::setup(){
         hits.push_back(hitList);
     }
     playbackStartTime = ofGetElapsedTimef();
+    
+    // ofxMidi stuff
+    
+    // print the available output ports to the console
+	midiOut.listPorts(); // via instance
+	//ofxMidiOut::listPorts(); // via static too
+	
+	// connect
+	midiOut.openPort(0);	// by number
+	//midiOut.openPort("IAC Driver Pure Data In");	// by name
+	//midiOut.openVirtualPort("ofxMidiOut");		// open a virtual port
+	
+	channel = 1;
+	currentPgm = 0;
+	note = 0;
+	velocity = 0;
+	pan = 0;
+	bend = 0;
+	touch = 0;
+	polytouch = 0;
 }
+
+//--------------------------------------------------------------
+void testApp::exit() {
+	
+	// clean up
+	midiOut.closePort();
+}
+
 
 //--------------------------------------------------------------
 void testApp::update(){
@@ -23,6 +51,7 @@ void testApp::update(){
     // startTime is reset every time we press the mouse, so we're recornding the time since we've pressed the mouse
     
     if(t.activate == true){
+        t.reset();
         startTime = ofGetElapsedTimef();
         playbackStartTime = ofGetElapsedTimef();
         // action to perform on timer rollover
@@ -35,13 +64,17 @@ void testApp::update(){
         }
         if(loop_counter>=TOTAL_LOOPS){
             loop_counter = 1;
+            for(int i=0; i<hits.size(); i++){
+                for(int j=0; j<hits[i].size(); j++){
+                    hits[i][j].played = false;
+                }
+            }
         } else {
             loop_counter+=1;
         }
 //        if(loops[loop_counter-1].size()>0){
 //            loops[loop_counter-1].clear();
 //        }
-        t.reset();
         cout<<playbackStartTime<<endl;
     }
 }
@@ -57,7 +90,7 @@ void testApp::draw(){
     // -------------------------- draw the line
 	ofSetColor(0,0,0);
 	ofNoFill();
-    
+    t.metronome();
     for( vector<vector <TimePoint> >::iterator it=loops.begin(); it!=loops.end(); it++ ){
         ofBeginShape();
         for( vector<TimePoint>::iterator it2=it->begin(); it2!=it->end(); it2++ ){
@@ -69,14 +102,31 @@ void testApp::draw(){
     
     string keys = "";
     for(int i=0; i<TOTAL_LOOPS; i++){
-        ofPoint pos = getPos(ofGetElapsedTimef() - playbackStartTime, loops[i]);
-        ofFill();
-        ofSetColor(255,0,0);
-        ofCircle(pos.x, pos.y, 10);
         if(i==loop_counter-1){
+            ofPoint pos = getPos(ofGetElapsedTimef() - playbackStartTime, loops[i]);
+            // x pos controls the pan (ctl = 10)
+            pan = ofMap(pos.x, 0, ofGetWidth(), 0, 127);
+            midiOut.sendControlChange(channel, 10, pan);
+            
+            // y pos controls the pitch bend
+            bend = ofMap(pos.y, 0, ofGetHeight(), 0, MIDI_MAX_BEND);
+            midiOut.sendPitchBend(channel, bend);
+            ofFill();
+            ofSetColor(255,0,0);
+            ofCircle(pos.x, pos.y, 10);
             for( int j=0; j<getKeys(ofGetElapsedTimef() - playbackStartTime, hits[i]); j++){
                 keys += ofToString(hits[i][j].key);
                 keys += " ";
+                // send a note on if the key is a letter or a number
+                if(isalnum((unsigned char) hits[i][j].key) && !hits[i][j].played) {
+                    
+                    // scale the ascii values to midi velocity range 0-127
+                    // see an ascii table: http://www.asciitable.com/
+                    note = ofMap(hits[i][j].key, 48, 122, 0, 127);
+                    velocity = 64;
+                    midiOut.sendNoteOn(channel, note,  velocity);
+                    hits[i][j].played=true;
+                }
             }
         }
 //        getKeys(ofGetElapsedTimef() - playbackStartTime, hits[i]);
@@ -108,6 +158,19 @@ void testApp::keyPressed(int key){
 	temp.key = key;
 	temp.t = ofGetElapsedTimef() - startTime;
 	hits[loop_counter-1].push_back(temp);
+    // send a note on if the key is a letter or a number
+	if(isalnum((unsigned char) key)) {
+        
+		// scale the ascii values to midi velocity range 0-127
+		// see an ascii table: http://www.asciitable.com/
+		note = ofMap(key, 48, 122, 0, 127);
+		velocity = 64;
+		midiOut.sendNoteOn(channel, note,  velocity);
+	}
+	
+	if(key == 'l') {
+		ofxMidiOut::listPorts();
+	}
 }
 
 //--------------------------------------------------------------
@@ -127,7 +190,13 @@ void testApp::mouseDragged(int x, int y, int button){
 	temp.y = mouseY;
 	temp.t = ofGetElapsedTimef() - startTime;
 	loops[loop_counter-1].push_back(temp);
-   
+ 	// x pos controls the pan (ctl = 10)
+	pan = ofMap(x, 0, ofGetWidth(), 0, 127);
+	midiOut.sendControlChange(channel, 10, pan);
+	
+	// y pos controls the pitch bend
+	bend = ofMap(y, 0, ofGetHeight(), 0, MIDI_MAX_BEND);
+	midiOut.sendPitchBend(channel, bend);
 }
 
 //--------------------------------------------------------------

@@ -20,4 +20,6 @@ public:
     void setLimit(float _limit);
     void update();
     bool activate;
+    void metronome();
+    float bpm;
 };
