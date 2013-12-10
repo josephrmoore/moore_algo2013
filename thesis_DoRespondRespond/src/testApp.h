@@ -46,4 +46,8 @@ public:
 	unsigned int currentPgm;
 	int note, velocity;
 	int pan, bend, touch, polytouch;
+    bool metronome;
+    void playNote(double time);
 };
+
+

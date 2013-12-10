@@ -35,6 +35,7 @@ void testApp::setup(){
 	bend = 0;
 	touch = 0;
 	polytouch = 0;
+    metronome = false;
 }
 
 //--------------------------------------------------------------
@@ -47,6 +48,7 @@ void testApp::exit() {
 
 //--------------------------------------------------------------
 void testApp::update(){
+    ofSetWindowTitle(ofToString(ofGetFrameRate()));
     t.update();
     // startTime is reset every time we press the mouse, so we're recornding the time since we've pressed the mouse
     
@@ -62,6 +64,13 @@ void testApp::update(){
             p1.active = false;
             p2.active = true;
         }
+        
+            for(int j=0; j<hits[loop_counter-1].size(); j++){
+                note = ofMap(hits[loop_counter-1][j].key, 48, 122, 0, 127);
+                velocity = 0;
+                midiOut << NoteOff(channel, note, velocity); // stream interface
+            }
+        
         if(loop_counter>=TOTAL_LOOPS){
             loop_counter = 1;
             for(int i=0; i<hits.size(); i++){
@@ -90,7 +99,9 @@ void testApp::draw(){
     // -------------------------- draw the line
 	ofSetColor(0,0,0);
 	ofNoFill();
-    t.metronome();
+    if(metronome){
+        t.metronome();
+    }
     for( vector<vector <TimePoint> >::iterator it=loops.begin(); it!=loops.end(); it++ ){
         ofBeginShape();
         for( vector<TimePoint>::iterator it2=it->begin(); it2!=it->end(); it2++ ){
@@ -114,7 +125,8 @@ void testApp::draw(){
             ofFill();
             ofSetColor(255,0,0);
             ofCircle(pos.x, pos.y, 10);
-            for( int j=0; j<getKeys(ofGetElapsedTimef() - playbackStartTime, hits[i]); j++){
+            int hs = getKeys(ofGetElapsedTimef() - playbackStartTime, hits[i]);
+            for( int j=0; j<hs; j++){
                 keys += ofToString(hits[i][j].key);
                 keys += " ";
                 // send a note on if the key is a letter or a number
@@ -125,9 +137,31 @@ void testApp::draw(){
                     note = ofMap(hits[i][j].key, 48, 122, 0, 127);
                     velocity = 64;
                     midiOut.sendNoteOn(channel, note,  velocity);
+                    if(i==0){
+                        if(j==0){
+                            note = ofMap(hits[TOTAL_LOOPS-1][hits[TOTAL_LOOPS-1].size()-1].key, 48, 122, 0, 127);
+                            velocity = 0;
+                            midiOut << NoteOff(channel, note, velocity); // stream interface
+                        } else {
+                            note = ofMap(hits[i][j-1].key, 48, 122, 0, 127);
+                            velocity = 0;
+                            midiOut << NoteOff(channel, note, velocity); // stream interface
+                        }
+                    } else {
+                        if(j==0){
+                            note = ofMap(hits[i-1][hits[TOTAL_LOOPS-1].size()-1].key, 48, 122, 0, 127);
+                            velocity = 0;
+                            midiOut << NoteOff(channel, note, velocity); // stream interface
+                        } else {
+                            note = ofMap(hits[i][j-1].key, 48, 122, 0, 127);
+                            velocity = 0;
+                            midiOut << NoteOff(channel, note, velocity); // stream interface
+                        }
+                    }
                     hits[i][j].played=true;
                 }
             }
+            
         }
 //        getKeys(ofGetElapsedTimef() - playbackStartTime, hits[i]);
     }
@@ -171,11 +205,19 @@ void testApp::keyPressed(int key){
 	if(key == 'l') {
 		ofxMidiOut::listPorts();
 	}
+    if(key == '-'){
+        metronome = !metronome;
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-
+    // send a note off if the key is a letter or a number
+    if(isalnum(key)) {
+        note = ofMap(key, 48, 122, 0, 127);
+        velocity = 0;
+        midiOut << NoteOff(channel, note, velocity); // stream interface
+    }
 }
 
 //--------------------------------------------------------------
@@ -377,4 +419,11 @@ int testApp::getKeys(float time, vector<TimePoint> t){
 	}
     // return our point which represents a position interpolated between two other points
 	return index;
+}
+
+void testApp::playNote(double time){
+    if(ofGetElapsedTimeMillis()-time>500){
+        
+    }
+    playNote(time);
 }
