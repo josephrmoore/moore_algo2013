@@ -139,9 +139,11 @@ void testApp::draw(){
                     midiOut.sendNoteOn(channel, note,  velocity);
                     if(i==0){
                         if(j==0){
+                            if(hits[TOTAL_LOOPS-1].size()>0){
                             note = ofMap(hits[TOTAL_LOOPS-1][hits[TOTAL_LOOPS-1].size()-1].key, 48, 122, 0, 127);
                             velocity = 0;
                             midiOut << NoteOff(channel, note, velocity); // stream interface
+                            }
                         } else {
                             note = ofMap(hits[i][j-1].key, 48, 122, 0, 127);
                             velocity = 0;
@@ -149,9 +151,11 @@ void testApp::draw(){
                         }
                     } else {
                         if(j==0){
+                            if(hits[TOTAL_LOOPS-1].size()>0){
                             note = ofMap(hits[i-1][hits[TOTAL_LOOPS-1].size()-1].key, 48, 122, 0, 127);
                             velocity = 0;
                             midiOut << NoteOff(channel, note, velocity); // stream interface
+                            }
                         } else {
                             note = ofMap(hits[i][j-1].key, 48, 122, 0, 127);
                             velocity = 0;

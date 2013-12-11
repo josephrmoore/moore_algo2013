@@ -12,7 +12,6 @@ void testApp::setup(){
     center.set(ofGetWidth()/2,ofGetHeight()/2);
     level.flocker.x = center.x;
     level.flocker.y = center.y;
-    level.copter.bait.setup2();
     level.copter.bait.setPhysics(9.0, 0.01, 0.001);
     level.copter.bait.setup(box.getWorld(), 0, 0, 10);
 }
@@ -83,27 +82,29 @@ void testApp::keyPressed(int key){
         }
     }
     if(level.level == 0 || level.level == -1){
-        if(key == ' '){
-            level.load(1);
-            for(int i=0; i<boxes.size(); i++){
-                boxes[i].destroy();
-            }
-            boxes.clear();
-            makeShape(200.0, ofGetHeight()-100);
-            makeShape(400.0, ofGetHeight()-100);
-            makeShape(600.0, ofGetHeight()-100);
-            makeShape(800.0, ofGetHeight()-100);
-            makeShape(200.0, ofGetHeight()-220);
-            makeShape(400.0, ofGetHeight()-240);
-            makeShape(800.0, ofGetHeight()-220);
-            makeShape(600.0, ofGetHeight()-240);
+        level.copter.bait.lifetime=0.001;
+        level.copter.bait.drop(ofVec2f(-ofGetWidth(), -ofGetHeight()));
+        level.load(1);
+        for(int i=0; i<boxes.size(); i++){
+            boxes[i].destroy();
         }
-        if(key == 'q' || key == 'Q'){
-            level.load(0);
-            for(int i=0; i<boxes.size(); i++){
-                boxes[i].destroy();
+        boxes.clear();
+        makeShape(200.0, ofGetHeight()-100);
+        makeShape(400.0, ofGetHeight()-100);
+        makeShape(600.0, ofGetHeight()-100);
+        makeShape(800.0, ofGetHeight()-100);
+        makeShape(200.0, ofGetHeight()-220);
+        makeShape(400.0, ofGetHeight()-240);
+        makeShape(800.0, ofGetHeight()-220);
+        makeShape(600.0, ofGetHeight()-240);
+        if(level.level == -1){
+            if(key == 'q' || key == 'Q'){
+                level.load(0);
+                for(int i=0; i<boxes.size(); i++){
+                    boxes[i].destroy();
+                }
+                boxes.clear();
             }
-            boxes.clear();
         }
     }
 }

@@ -13,8 +13,7 @@ Copter::Copter(){
     pos.set(ofGetWidth()/2, 60);
     vel.set(speed,1);
     baits = 3;
-    bait.setup2();
-    skin.loadImage("copter.gif");
+    skin.loadImage("copter.png");
 }
 
 void Copter::update(){
@@ -23,7 +22,7 @@ void Copter::update(){
 }
 void Copter::draw(){
 //    ofRect(pos.x, pos.y, 40, 20);
-    skin.draw(pos, 80, 50);
+    skin.draw(pos, 80, 56);
     ofPushStyle();
     ofSetColor(0);
     ofDrawBitmapString(ofToString(baits), pos.x+15, pos.y+15);

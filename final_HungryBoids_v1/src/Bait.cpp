@@ -8,11 +8,12 @@
 
 #include "Bait.h"
 
-void Bait::setup2(){
-    lifetime = 1;
+Bait::Bait(){
+    lifetime = -1;
     eaten = true;
     img.loadImage("baitball.png");
     radius = 100.0;
+    dropped = false;
 }
 
 void Bait::drop(ofVec2f _pos){
@@ -33,10 +34,16 @@ void Bait::update(){
         eaten = false;
     }
     
+    if(lifetime==-1){
+        eaten = false;
+    }
+    
     if(eaten){
         pos = ofVec2f(-ofGetWidth(), -ofGetHeight());
     } else {
-        setRadius(radius/2-((ofGetElapsedTimeMillis()-timer)/lifetime*radius/2));
+        if(lifetime>-1){
+            setRadius(radius/2-((ofGetElapsedTimeMillis()-timer)/lifetime*radius/2));
+        }
     }
 }
 

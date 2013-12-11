@@ -20,7 +20,8 @@ void Brick::draw(){
     //    ofCircle(0, 0, getRadius());
     ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CENTER);
-    img.draw(ofVec2f(0,0), getWidth()*2,getHeight()*2);
+    ofSetColor(0);
+    ofRect(ofVec2f(0,0), getWidth()*2,getHeight()*2);
     ofEnableAlphaBlending();
     ofSetColor(0);
     //	ofLine(0, 0, radius, 0);

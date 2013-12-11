@@ -19,6 +19,10 @@ void Level::setup(b2World* _box){
 //        bricks.push_back(b);
 //    }
     bk.loadImage("bk.jpg");
+    title_bk.loadImage("boids_titlescreen_bk.png");
+    title_hungry.loadImage("boids_titlescreen_hungry.png");
+    title_boids.loadImage("boids_titlescreen_boids.png");
+    title_start.loadImage("boids_titlescreen_start.png");
     flocker.addParticle( _box, 100 );
     timelimit = 30000;
     level = 0;
@@ -63,9 +67,10 @@ void Level::update(bool _bricks){
         }
         flocker.applyForces(80, 0.4, 0.75);
         flocker.update();
-    } else {
+    } else if(level>0){
         checkWin(_bricks);
     }
+    copter.bait.update();
 }
 
 void Level::checkWin(bool bricks){
@@ -105,12 +110,35 @@ void Level::title(){
     ofDrawBitmapString("Hungry Boids", 400, 200);
     ofDrawBitmapString("PRESS SPACE TO CONTINUE", 400, 250);
     ofPopStyle();
+    title_bk.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
+    title_start.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
+    ofPushStyle();
+    ofSetColor(0,0,255);
+    title_hungry.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
+    ofPopStyle();
+    ofPushStyle();
+    ofSetColor(0,255,0);
+    title_boids.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
+    ofPopStyle();
+    copter.bait.draw();
+    flocker.draw();
 }
 
 
 void Level::draw(){
     if(level>0 && !won){
-        bk.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
+//        bk.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
+        ofSetColor(255);
+        int rows = ofGetHeight()/64;
+        int step = 255/rows;
+        for(int i=0; i<rows; i++){
+            ofPushStyle();
+            ofSetColor(i*step);
+            ofRect(0,i*64,ofGetWidth(),64);
+            ofPopStyle();
+        }
+        
+        
         // height line
         ofPushStyle();
         ofSetColor(255);
@@ -144,6 +172,11 @@ void Level::draw(){
     if(level == 0) {
         // intro screen
         title();
+        if(copter.bait.dropped == false){
+            copter.bait.eaten = true;
+            copter.bait.drop(ofVec2f(200.0,0));
+            copter.bait.dropped = true;
+        }
     } else if (level == -1){
         lose();
     }

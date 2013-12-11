@@ -39,4 +39,6 @@ public:
     bool won;
     void reset();
     ofImage bk;
+    ofImage title_start, title_hungry, title_boids, title_bk;
+    Bait title_bait;
 };
