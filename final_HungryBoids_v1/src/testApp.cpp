@@ -14,6 +14,13 @@ void testApp::setup(){
     level.flocker.y = center.y;
     level.copter.bait.setPhysics(9.0, 0.01, 0.001);
     level.copter.bait.setup(box.getWorld(), 0, 0, 10);
+    noise.loadSound("boids_noise.wav");
+    noise.setLoop(true); //Sound will loop
+    noise.setMultiPlay(true);
+    noise.play();
+    ofVec2f dist;
+    dist = level.flocker.center-ofVec2f(ofGetWidth()/2,ofGetHeight()/2);
+    center_perc = dist.length();
 }
 
 //--------------------------------------------------------------
@@ -24,6 +31,11 @@ void testApp::update(){
     level.flocker.x = level.copter.bait.pos.x;
     level.flocker.y = level.copter.bait.pos.y;
     b2World* b = box.getWorld();
+    ofVec2f dist;
+    dist = level.flocker.center-ofVec2f(ofGetWidth()/2,ofGetHeight()/2);
+    center_perc = dist.length();
+    cout<<center_perc<<endl;
+    trill.setVolume(ofClamp(ofMap(center_perc, 500, 100, 0, 1.0), 0, 1.0));
 }
 
 //--------------------------------------------------------------
@@ -82,6 +94,15 @@ void testApp::keyPressed(int key){
         }
     }
     if(level.level == 0 || level.level == -1){
+        noise.stop();
+        all.loadSound("boids_notrill.wav");
+        all.setLoop(true); //Sound will loop
+        all.setMultiPlay(true);
+        all.play();
+        trill.loadSound("boids_trill.wav");
+        trill.setLoop(true); //Sound will loop
+        trill.setMultiPlay(true);
+        trill.play();
         level.copter.bait.lifetime=0.001;
         level.copter.bait.drop(ofVec2f(-ofGetWidth(), -ofGetHeight()));
         level.load(1);
@@ -113,10 +134,10 @@ bool testApp::checkBricks(){
     bool anyhigh = false;
     int totalin = 0;
     for(int i=0; i<boxes.size(); i++){
-        cout<<"box"<<i<<" "<<"pos y: "<<boxes[i].getPosition().y<<endl;
-        cout<<"ofHeight: "<<ofGetHeight()<<" level height: "<<level.height<<endl;
-        cout<<"ofHeight-levelheight: "<<ofGetHeight()-level.height<<endl;
-        cout<<"height: "<<boxes[i].getHeight()<<" width: "<<boxes[i].getWidth()<<endl;
+//        cout<<"box"<<i<<" "<<"pos y: "<<boxes[i].getPosition().y<<endl;
+//        cout<<"ofHeight: "<<ofGetHeight()<<" level height: "<<level.height<<endl;
+//        cout<<"ofHeight-levelheight: "<<ofGetHeight()-level.height<<endl;
+//        cout<<"height: "<<boxes[i].getHeight()<<" width: "<<boxes[i].getWidth()<<endl;
 
         if(boxes[i].getPosition().y<ofGetHeight()-level.height){
             anyhigh = true;
@@ -134,7 +155,7 @@ bool testApp::checkBricks(){
             return false;
         }
     }
-    cout<<"totalin: "<<totalin<<endl;
+//    cout<<"totalin: "<<totalin<<endl;
     if(totalin<level.height){
         return false;
     }
@@ -159,7 +180,7 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-
+    level.flocker.reset();
 }
 
 //--------------------------------------------------------------

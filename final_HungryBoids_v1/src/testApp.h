@@ -33,4 +33,6 @@ public:
     ofVec2f center;
     
     bool checkBricks();
+    ofSoundPlayer noise, all, trill;
+    float center_perc;
 };

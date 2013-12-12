@@ -119,6 +119,7 @@ void FlockController::update(){
     for( int i=0; i<boidList.size(); i++ ){
         boidList[i].update();
     }
+    center = flockPos();
 }
 
 //--------------------------------------------------------------
@@ -126,4 +127,48 @@ void FlockController::draw(){
     for( int i=0; i<boidList.size(); i++ ){
         boidList[i].draw();
     }
+}
+
+ofPoint FlockController::flockPos(){
+    float minx = ofGetWidth();
+    float miny = ofGetHeight();
+    float maxx = 0;
+    float maxy = 0;
+    
+    for( int i=0; i<boidList.size(); i++ ){
+        if(boidList[i].pos.x>maxx){
+            maxx = boidList[i].pos.x;
+        }
+        if(boidList[i].pos.y>maxy){
+            maxy = boidList[i].pos.y;
+        }
+        if(boidList[i].pos.x<minx){
+            minx = boidList[i].pos.x;
+        }
+        if(boidList[i].pos.y<miny){
+            miny = boidList[i].pos.y;
+        }
+    }
+    return ofVec2f((maxx-minx),(maxy-miny));
+}
+
+
+void FlockController::reset(){
+    for( int i=0; i<boidList.size(); i++ ){
+
+    // I was getting bad results, so I looked up uniform sphere distribution and got this: http://mathworld.wolfram.com/SpherePointPicking.html
+    float phi = ofRandom( 0, TWO_PI );
+    float costheta = ofRandom( -1.0f, 1.0f );
+    
+    float rho = sqrt( 1.0f - costheta * costheta );
+    float x = rho * cos( phi );
+    float y = rho * sin( phi );
+    float z = costheta;
+    
+    ofVec2f randVec(x, y);
+    
+    boidList[i].pos = randVec * ofRandom( 100.0f, 600.0f );
+    boidList[i].vel = -randVec;
+    }
+    center = ofVec2f(0,0);
 }

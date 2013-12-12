@@ -13,6 +13,7 @@
 #include "FlockController.h"
 #include "Copter.h"
 #include "Player.h"
+#include "Timer.h"
 
 class Level {
 public:
@@ -41,4 +42,6 @@ public:
     ofImage bk;
     ofImage title_start, title_hungry, title_boids, title_bk;
     Bait title_bait;
+    Timer title_word1, title_word2, title_back, level_bars;
+    ofColor word1, word2, back;
 };

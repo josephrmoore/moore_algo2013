@@ -27,6 +27,12 @@ void Level::setup(b2World* _box){
     timelimit = 30000;
     level = 0;
     won = false;
+    title_back.limit = 2000;
+    title_word1.limit = 200;
+    title_word2.limit = 50;
+    word1 = ofColor(255);
+    word2 = ofColor(255);
+    back = ofColor(255);
 }
 
 void Level::load(int _level){
@@ -34,7 +40,7 @@ void Level::load(int _level){
     level = _level;
     start = ofGetElapsedTimeMillis();
     copter.pos.set(ofGetWidth()/2, 60);
-
+    level_bars.limit = 1000;
     if(level == 1){
         // precise placement of each brick instead of loop?
 
@@ -59,16 +65,40 @@ void Level::load(int _level){
 }
 
 void Level::update(bool _bricks){
-
+    ofBackground(back);
+    title_back.update();
+    if(title_back.activate == true){
+        back = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
+        back.setBrightness(255);
+        title_back.reset();
+    }
     if(ofGetElapsedTimeMillis()-start<=timelimit){
+        if(level_bars.activate == true){
+            level_bars.reset();
+        }
         copter.update();
         for(int i=0; i<bricks.size(); i++){
             bricks[i].update();
         }
         flocker.applyForces(80, 0.4, 0.75);
         flocker.update();
+        level_bars.update();
     } else if(level>0){
         checkWin(_bricks);
+    }
+    if(level==0){
+        title_word1.update();
+        if(title_word1.activate == true){
+            word1 = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
+            word1.setBrightness(255);
+            title_word1.reset();
+        }
+        title_word2.update();
+        if(title_word2.activate == true){
+            word2 = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
+            word2.setBrightness(255);
+            title_word2.reset();
+        }
     }
     copter.bait.update();
 }
@@ -106,18 +136,15 @@ void Level::lose(){
 void Level::title(){
     level = 0;
     ofPushStyle();
-    ofSetColor(0);
-    ofDrawBitmapString("Hungry Boids", 400, 200);
-    ofDrawBitmapString("PRESS SPACE TO CONTINUE", 400, 250);
-    ofPopStyle();
     title_bk.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
     title_start.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
+    ofPopStyle();
     ofPushStyle();
-    ofSetColor(0,0,255);
+    ofSetColor(word1);
     title_hungry.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
     ofPopStyle();
     ofPushStyle();
-    ofSetColor(0,255,0);
+    ofSetColor(word2);
     title_boids.draw(ofVec2f(0,0),ofGetWidth(),ofGetHeight());
     ofPopStyle();
     copter.bait.draw();
@@ -133,11 +160,10 @@ void Level::draw(){
         int step = 255/rows;
         for(int i=0; i<rows; i++){
             ofPushStyle();
-            ofSetColor(i*step);
+            ofSetColor(i*step, 100);
             ofRect(0,i*64,ofGetWidth(),64);
             ofPopStyle();
         }
-        
         
         // height line
         ofPushStyle();

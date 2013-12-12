@@ -29,7 +29,7 @@ void Boid::pullToCenter( ofVec2f center ){
     
     ofVec2f dir = pos - center;
     float dist = dir.length();
-    float maxDistance = 10.0;
+    float maxDistance = 2.0;
     
     if( dir.length() > maxDistance ) {
         dir.normalize();
@@ -40,23 +40,22 @@ void Boid::pullToCenter( ofVec2f center ){
 void Boid::update(){
     
     pos = getPosition();
-////    vel += getVelocity();
-////    vel += getPosition();
     vel += acc;
-//
+    
     // don't move too fast
     vel.limit(8.0);
-
+    
     // but also don't move too slow!
     if( vel.lengthSquared() < 1.0 ){
         vel = vel.normalized() * 1.0;
     }
+    
     setVelocity(vel.x, vel.y);
+    
     pos += vel;
     setPosition(pos.x, pos.y);
-//
+    
     acc.set(0);
-//    setPosition(pos);
 }
 
 void Boid::draw(){
@@ -68,7 +67,7 @@ void Boid::draw(){
 //	ofCircle(0, 0, getRadius());
     ofPushStyle();
     ofEnableAlphaBlending();
-    ofSetColor(cos(ofNoise(ofGetElapsedTimeMillis()))*255,sin(ofNoise(ofGetElapsedTimeMillis()))*255,ofNoise(ofGetElapsedTimeMillis())*255);
+    ofSetColor(ofRandom(255),ofRandom(255),ofRandom(255));
     ofRect(ofVec2f(0,0), 10, 10);
     ofPopStyle();
     

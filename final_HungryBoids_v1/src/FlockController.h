@@ -24,4 +24,7 @@ public:
     
     vector<Boid>    boidList;
     float x, y;
+    ofPoint flockPos();
+    ofPoint center;
+    void reset();
 };

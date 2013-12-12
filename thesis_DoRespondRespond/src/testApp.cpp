@@ -35,7 +35,7 @@ void testApp::setup(){
 	bend = 0;
 	touch = 0;
 	polytouch = 0;
-    metronome = false;
+    metronome = true;
 }
 
 //--------------------------------------------------------------
