@@ -15,6 +15,12 @@ Copter::Copter(){
     baits = 1;
     skin.loadImage("copter.png");
     section = 0;
+    toss.loadSound("toss.wav");
+    toss.setMultiPlay(true);
+    fall.loadSound("fall.wav");
+    fall.setMultiPlay(true);
+    fall2.loadSound("fall2.wav");
+    fall2.setMultiPlay(true);
 }
 
 void Copter::update(){
@@ -41,9 +47,16 @@ void Copter::drop(){
     if(baits>0){
         if(bait.eaten){
             baits--;
+            toss.setPosition(0);
+            fall.setPosition(0);
+            fall2.setPosition(0);
+            toss.play();
+            fall.play();
+            fall2.play();
         }
         bait.drop(pos);
     }
+
 }
 
 void Copter::load(float timer){

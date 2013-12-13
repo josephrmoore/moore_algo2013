@@ -10,16 +10,19 @@ void testApp::setup(){
     box.createBounds(bounds);
     box.enableGrabbing();
     box.registerGrabbing();
+    
     // Boilerplate OF stuff
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
     ofBackground(ofRandom(255),ofRandom(255),ofRandom(255));
+    
     // State & Level variables
     state_screen = 0;
     state_win = false;
     levels_total = 7;
     levels_current = 0;
+    
     // Title screen
     title_back.limit = 2000;
     title_word1.limit = 200;
@@ -31,11 +34,13 @@ void testApp::setup(){
     title_hungry.loadImage("boids_titlescreen_hungry.png");
     title_boids.loadImage("boids_titlescreen_boids.png");
     title_start.loadImage("boids_titlescreen_start.png");
+    
     //Win & Lose Screens
     win_start.loadImage("boids_win.png");
     lose_start.loadImage("boids_lose.png");
     win_word.loadImage("boids_win_word.png");
     lose_word.loadImage("boids_lose_word.png");
+    
     // Sounds
     all.loadSound("boids_notrill.wav");
     all.setLoop(true); //Sound will loop
@@ -47,15 +52,18 @@ void testApp::setup(){
     noise.setLoop(true); //Sound will loop
     noise.setMultiPlay(true);
     noise.play();
+    
     // Baits
     title_bait.setPhysics(9.0, 0.01, 0.001);
     title_bait.setup(box.getWorld(), 0, 0, 10);
     title_bait.drop(ofVec2f(200,0));
     copter.bait.setPhysics(9.0, 0.01, 0.001);
     copter.bait.setup(box.getWorld(), 0, 0, 10);
+    
     // Flockers
     title_flocker.addParticle( box.getWorld(), 100 );
     flocker.addParticle( box.getWorld(), 100 );
+    
     // Levels
     level1.bricks_num=3;
     level1.createCondition(2);
@@ -91,6 +99,7 @@ void testApp::setup(){
     level7.createCondition(3);
     level7.createCondition(2);
     levels.push_back(level7);
+    
     // Example images
     box2.loadImage("2.png");
     box3.loadImage("3.png");

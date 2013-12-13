@@ -29,4 +29,5 @@ public:
     vector<float> drop_points;
     int section;
     float period;
+    ofSoundPlayer toss, fall, fall2;
 };

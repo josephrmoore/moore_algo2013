@@ -35,16 +35,23 @@ bool Level::checkConditions(vector<Brick> b){
     for(int i=0; i<conditions.size(); i++){
         bool anymet = false;
         for(int j=0; j<b.size(); j++){
-//            cout<<"i: "<<i<<" j: "<<j<<endl;
-//            cout<<b[j].getPosition().y<<endl;
-//            cout<<ofGetHeight()-conditions[i].height<<endl;
             if(b[j].isSleeping() && b[j].getPosition().y<ofGetHeight()-(conditions[i].height*100)+50){
                 if(winners.size()>0){
                     for(int k=0; k<winners.size(); k++){
                         if(j!=winners[k]){
-                            anymet = true;
-                            winners.push_back(j);
-                            bricks.push_back(b[j].getPosition());
+                            bool stack = false;
+                            for (b2ContactEdge* edge = b[j].body->GetContactList(); edge; edge = edge->next){
+                                b2Fixture* a1 = edge->contact->GetFixtureA();
+                                b2Fixture* a2 = edge->contact->GetFixtureB();
+                                if(a1->GetBody()->GetPosition() == b[winners[k]].body->GetPosition() || a2->GetBody()->GetPosition() == b[winners[k]].body->GetPosition()){
+                                    stack = true;
+                                }
+                            }
+                            if(!stack){
+                                anymet = true;
+                                winners.push_back(j);
+                                bricks.push_back(b[j].getPosition());
+                            }
                         }
                     }
                 } else {

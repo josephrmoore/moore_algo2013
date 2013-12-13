@@ -51,8 +51,6 @@ public:
     Copter copter;
     
     float center_perc;
-
-    vector<vector<ofVec2f> > towers;
     
     vector<Brick> bricks;
     void makeShapes(Level l);
