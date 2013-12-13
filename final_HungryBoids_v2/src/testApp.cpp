@@ -6,7 +6,7 @@ void testApp::setup(){
     box.init();
 	box.setGravity(0, 5);
 	box.setFPS(30.0);
-    ofRectangle bounds(-ofGetWidth()/2,-ofGetHeight()/2, ofGetWidth()*2, ofGetHeight()*1.5);
+    ofRectangle bounds(-ofGetWidth()/2,-ofGetHeight(), ofGetWidth()*2, ofGetHeight()*2);
     box.createBounds(bounds);
     box.enableGrabbing();
     box.registerGrabbing();
@@ -86,7 +86,10 @@ void testApp::setup(){
     level7.createCondition(3);
     level7.createCondition(2);
     levels.push_back(level7);
-    
+    // Example images
+    box2.loadImage("2.png");
+    box3.loadImage("3.png");
+    box4.loadImage("4.png");
 }
 
 //--------------------------------------------------------------
@@ -183,6 +186,7 @@ void testApp::keyPressed(int key){
             copter.load(30000);
             levels[levels_current-1].load(levels_current);
             makeShapes(levels[levels_current-1]);
+            copter.baits = 3+levels_current-1;
         }
     } else if (state_screen==1){
         // lose
@@ -212,6 +216,7 @@ void testApp::keyPressed(int key){
                 levels_current+=1;
                 levels[levels_current-1].load(levels_current);
                 makeShapes(levels[levels_current-1]);
+                copter.baits = 3+levels_current-1;
             } else {
                 state_screen = 4;
             }
@@ -432,8 +437,8 @@ void testApp::level(int level){
     for(int i=0; i<levels_current-1; i++){
         for(int j=0; j<levels[i].bricks.size(); j++){
             ofPushStyle();
-            ofSetColor(50, 255-i*20);
-            ofRect(levels[i].bricks[j], 100, 900);
+            ofSetColor(100, 255-i*20);
+            ofRect(levels[i].bricks[j], 80, 900);
             ofPopStyle();
         }
     }
@@ -444,6 +449,17 @@ void testApp::level(int level){
     copter.bait.draw();
     for(int i=0; i<bricks.size(); i++){
         bricks[i].draw();
+    }
+    for(int i=0; i<levels[levels_current-1].conditions.size(); i++){
+        if(levels[levels_current-1].conditions[i].height==2){
+            box2.draw(ofVec2f(900+(i*25),20), 20, 85);
+        } else if (levels[levels_current-1].conditions[i].height==3){
+            box3.draw(ofVec2f(900+(i*25),20), 20, 85);
+        } else if (levels[levels_current-1].conditions[i].height==4){
+            box4.draw(ofVec2f(900+(i*25),20), 20, 85);
+            
+        }
+        
     }
 
 }

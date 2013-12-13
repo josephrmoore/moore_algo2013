@@ -9,7 +9,7 @@
 #include "Copter.h"
 
 Copter::Copter(){
-    speed = 3;
+    speed = 2;
     pos.set(ofGetWidth()/2, 60);
     vel.set(speed,1);
     baits = 1;

@@ -24,7 +24,7 @@ void Level::checkWin(){
 
 Condition Level::createCondition(int _size){
     Condition c;
-    c.height = _size*100;
+    c.height = _size;
     conditions.push_back(c);
     return c;
 }
@@ -35,10 +35,10 @@ bool Level::checkConditions(vector<Brick> b){
     for(int i=0; i<conditions.size(); i++){
         bool anymet = false;
         for(int j=0; j<b.size(); j++){
-            cout<<"i: "<<i<<" j: "<<j<<endl;
-            cout<<b[j].getPosition().y<<endl;
-            cout<<ofGetHeight()-conditions[i].height<<endl;
-            if(b[j].isSleeping() && b[j].getPosition().y<ofGetHeight()-conditions[i].height+50){
+//            cout<<"i: "<<i<<" j: "<<j<<endl;
+//            cout<<b[j].getPosition().y<<endl;
+//            cout<<ofGetHeight()-conditions[i].height<<endl;
+            if(b[j].isSleeping() && b[j].getPosition().y<ofGetHeight()-(conditions[i].height*100)+50){
                 if(winners.size()>0){
                     for(int k=0; k<winners.size(); k++){
                         if(j!=winners[k]){

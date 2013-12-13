@@ -59,4 +59,6 @@ public:
     
     Level level1, level2, level3, level4, level5, level6, level7;
     vector<Level> levels;
+    
+    ofImage box2,box3,box4;
 };
