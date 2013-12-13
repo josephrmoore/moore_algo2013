@@ -92,3 +92,11 @@ Project URL: http://sodaplay.com/creators/joseph_moore/items/walker4
 Video documentation: VIDEOS/walker.mov
 
 Final Project Idea: Going with a game called Hungry Boids. Knock over the city with a flock of monsters eating bait you drop from the sky. I'm going to hand design a few levels, but with an eye to allowing for algorithmic level creation as well. If I can get the basic game and 3 levels I'll call it a success. 
+
+Final:
+
+HungryBoids_v2
+
+Final write-up is in the WRITING folder.
+
+I had a lot of fun making this game and plan to make it even better. Thanks for a great semester and making this possible.
