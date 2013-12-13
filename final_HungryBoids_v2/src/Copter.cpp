@@ -12,7 +12,7 @@ Copter::Copter(){
     speed = 3;
     pos.set(ofGetWidth()/2, 60);
     vel.set(speed,1);
-    baits = 3;
+    baits = 1;
     skin.loadImage("copter.png");
     section = 0;
 }

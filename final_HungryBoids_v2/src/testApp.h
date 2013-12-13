@@ -5,6 +5,8 @@
 #include "FlockController.h"
 #include "Timer.h"
 #include "Copter.h"
+#include "Brick.h"
+#include "Level.h"
 
 class testApp : public ofBaseApp{
 
@@ -51,4 +53,10 @@ public:
     float center_perc;
 
     vector<vector<ofVec2f> > towers;
+    
+    vector<Brick> bricks;
+    void makeShapes(Level l);
+    
+    Level level1, level2, level3, level4, level5, level6, level7;
+    vector<Level> levels;
 };

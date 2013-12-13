@@ -51,6 +51,42 @@ void testApp::setup(){
     // Flockers
     title_flocker.addParticle( box.getWorld(), 100 );
     flocker.addParticle( box.getWorld(), 100 );
+    // Levels
+    level1.bricks_num=3;
+    level1.createCondition(2);
+    levels.push_back(level1);
+
+    level2.bricks_num=5;
+    level2.createCondition(2);
+    level2.createCondition(2);
+    levels.push_back(level2);
+    
+    level3.bricks_num=5;
+    level3.createCondition(3);
+    levels.push_back(level3);
+    
+    level4.bricks_num=7;
+    level4.createCondition(3);
+    level4.createCondition(2);
+    levels.push_back(level4);
+
+    level5.bricks_num=7;
+    level5.createCondition(3);
+    level5.createCondition(3);
+    levels.push_back(level5);
+    
+    level6.bricks_num=10;
+    level6.createCondition(3);
+    level6.createCondition(3);
+    level6.createCondition(3);
+    levels.push_back(level6);
+    
+    level7.bricks_num=12;
+    level7.createCondition(4);
+    level7.createCondition(3);
+    level7.createCondition(2);
+    levels.push_back(level7);
+    
 }
 
 //--------------------------------------------------------------
@@ -107,7 +143,9 @@ void testApp::update(){
         dist = flocker.center-ofVec2f(ofGetWidth()/2,ofGetHeight()/2);
         center_perc = dist.length();
         trill.setVolume(ofClamp(ofMap(center_perc, 500, 100, 0, 1.0), 0, 1.0));
-        
+        if(levels[levels_current-1].checkConditions(bricks)){
+            state_screen=2;
+        }
     }
 }
 
@@ -143,6 +181,8 @@ void testApp::keyPressed(int key){
             all.play();
             trill.play();
             copter.load(30000);
+            levels[levels_current-1].load(levels_current);
+            makeShapes(levels[levels_current-1]);
         }
     } else if (state_screen==1){
         // lose
@@ -170,6 +210,8 @@ void testApp::keyPressed(int key){
             if(levels_current<levels_total){
                 state_screen = 3;
                 levels_current+=1;
+                levels[levels_current-1].load(levels_current);
+                makeShapes(levels[levels_current-1]);
             } else {
                 state_screen = 4;
             }
@@ -349,17 +391,30 @@ void testApp::title(){
 
 //--------------------------------------------------------------
 void testApp::win(){
-    
+    ofPushStyle();
+    ofSetColor(0);
+    ofDrawBitmapString("You Win!", 400, 200);
+    ofDrawBitmapString("PRESS SPACE FOR THE NEXT LEVEL", 400, 250);
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------
 void testApp::lose(){
-    
+    ofPushStyle();
+    ofSetColor(0);
+    ofDrawBitmapString("You lose. Sorry.", 400, 200);
+    ofDrawBitmapString("PRESS SPACE TO TRY AGAIN", 400, 250);
+    ofDrawBitmapString("PRESS Q TO QUIT", 400, 300);
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------
 void testApp::ending(){
-    
+    ofPushStyle();
+    ofSetColor(0);
+    ofDrawBitmapString("You Wone it all!", 400, 200);
+    ofDrawBitmapString("PRESS SPACE TO QUIT", 400, 250);
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------
@@ -374,9 +429,34 @@ void testApp::level(int level){
         ofRect(0,i*64,ofGetWidth(),64);
         ofPopStyle();
     }
+    for(int i=0; i<levels_current-1; i++){
+        for(int j=0; j<levels[i].bricks.size(); j++){
+            ofPushStyle();
+            ofSetColor(50, 255-i*20);
+            ofRect(levels[i].bricks[j], 100, 900);
+            ofPopStyle();
+        }
+    }
     ofPushMatrix();{
         flocker.draw();
     }ofPopMatrix();
     copter.draw();
     copter.bait.draw();
+    for(int i=0; i<bricks.size(); i++){
+        bricks[i].draw();
+    }
+
+}
+
+void testApp::makeShapes(Level l){
+    for(int i=0; i<bricks.size(); i++){
+        bricks[i].destroy();
+    }
+    bricks.clear();
+    for(int i=0; i<l.bricks_num; i++){
+        Brick r;
+        r.setPhysics(3.0, 0.03, 1.0);
+        r.setup(box.getWorld(), 100+(ofGetWidth()/l.bricks_num)*i, ofGetHeight()/2, 100/2.0, 100/2.0);
+        bricks.push_back(r);
+    }
 }

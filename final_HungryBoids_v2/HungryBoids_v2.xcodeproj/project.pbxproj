@@ -26,6 +26,8 @@
 		33710250185AE49E005277D2 /* Copter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3371024E185AE49E005277D2 /* Copter.cpp */; };
 		33710253185AE667005277D2 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33710251185AE667005277D2 /* Timer.cpp */; };
 		33710256185AEC1A005277D2 /* Screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33710254185AEC1A005277D2 /* Screen.cpp */; };
+		33710259185B0AAC005277D2 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33710257185B0AAC005277D2 /* Level.cpp */; };
+		3371025E185B8696005277D2 /* Condition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3371025C185B8696005277D2 /* Condition.cpp */; };
 		34BC8BAFAA94BD8CCBA662D1 /* b2LineJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45EB42F8640CFCAE47AA7E08 /* b2LineJoint.cpp */; };
 		3E76A164B41BCEB11B15C175 /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A296623A714C9F8EDB4BCA26 /* b2Body.cpp */; };
 		41DDB078572B368F685E19F8 /* b2PolygonContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 993DA2BF507B037B97E6FA16 /* b2PolygonContact.cpp */; };
@@ -133,6 +135,10 @@
 		33710252185AE667005277D2 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		33710254185AEC1A005277D2 /* Screen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Screen.cpp; sourceTree = "<group>"; };
 		33710255185AEC1A005277D2 /* Screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen.h; sourceTree = "<group>"; };
+		33710257185B0AAC005277D2 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
+		33710258185B0AAC005277D2 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		3371025C185B8696005277D2 /* Condition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Condition.cpp; sourceTree = "<group>"; };
+		3371025D185B8696005277D2 /* Condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Condition.h; sourceTree = "<group>"; };
 		3B2388BEE23F8A1DD0AADBC6 /* ofxBox2dBaseShape.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBox2dBaseShape.cpp; path = ../../../addons/ofxBox2d/src/ofxBox2dBaseShape.cpp; sourceTree = SOURCE_ROOT; };
 		3C9685D59F4D73A3593DEF83 /* ofxBox2dUtils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBox2dUtils.h; path = ../../../addons/ofxBox2d/src/ofxBox2dUtils.h; sourceTree = SOURCE_ROOT; };
 		3D48FA57F2101B998AFF455C /* b2RevoluteJoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2RevoluteJoint.cpp; path = ../../../addons/ofxBox2d/libs/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp; sourceTree = SOURCE_ROOT; };
@@ -509,6 +515,10 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+				33710257185B0AAC005277D2 /* Level.cpp */,
+				33710258185B0AAC005277D2 /* Level.h */,
+				3371025C185B8696005277D2 /* Condition.cpp */,
+				3371025D185B8696005277D2 /* Condition.h */,
 				33710254185AEC1A005277D2 /* Screen.cpp */,
 				33710255185AEC1A005277D2 /* Screen.h */,
 				33710242185ADA3F005277D2 /* FlockController.cpp */,
@@ -640,6 +650,7 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				33710259185B0AAC005277D2 /* Level.cpp in Sources */,
 				B16C89D9CA996CA8FD860D81 /* ofxBox2d.cpp in Sources */,
 				33710247185ADA49005277D2 /* Boid.cpp in Sources */,
 				F2FF2F9D6699B4B328CB6BE3 /* ofxBox2dBaseShape.cpp in Sources */,
@@ -650,6 +661,7 @@
 				3371024D185ADFAF005277D2 /* Bait.cpp in Sources */,
 				1B19FD7E51B73109C4AC02D9 /* b2BroadPhase.cpp in Sources */,
 				2F666321514A2075B12CE4EE /* b2CollideCircle.cpp in Sources */,
+				3371025E185B8696005277D2 /* Condition.cpp in Sources */,
 				298EAD2C029D9959F5B32246 /* b2CollidePolygon.cpp in Sources */,
 				AC5A3D9E6C3E12122C80F404 /* b2Collision.cpp in Sources */,
 				A2E3224BF9B63DAA802A0F18 /* b2Distance.cpp in Sources */,
