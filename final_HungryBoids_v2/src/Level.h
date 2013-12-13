@@ -22,7 +22,6 @@ public:
     int bricks_num;
     int conditions_num;
     bool complete;
-    void checkWin();
     Condition createCondition(int _size);
     bool checkConditions(vector<Brick> b);
     float timer;

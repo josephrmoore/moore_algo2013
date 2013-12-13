@@ -18,10 +18,6 @@ void Level::load(int _level){
     
 }
 
-void Level::checkWin(){
-    
-}
-
 Condition Level::createCondition(int _size){
     Condition c;
     c.height = _size;

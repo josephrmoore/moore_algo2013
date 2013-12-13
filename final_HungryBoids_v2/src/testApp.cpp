@@ -506,7 +506,7 @@ void testApp::makeShapes(Level l){
     bricks.clear();
     for(int i=0; i<l.bricks_num; i++){
         Brick r;
-        r.setPhysics(3.0, 0.03, 1.0);
+        r.setPhysics(300.0, 0.03, 1.0);
         r.setup(box.getWorld(), 100+(ofGetWidth()/l.bricks_num)*i, ofGetHeight()/2, 100/2.0, 100/2.0);
         bricks.push_back(r);
     }
