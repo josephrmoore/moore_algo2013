@@ -57,7 +57,8 @@ void Bait::draw(){
     ofColor c = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
     ofSetColor(c);
     ofSetRectMode(OF_RECTMODE_CENTER);
-    img.draw(ofVec2f(-90,-90), getRadius()*2,getRadius()*2);
+    ofCircle(0, 0, getRadius());
+//    img.draw(ofVec2f(-90,-90), getRadius()*2,getRadius()*2);
     ofEnableAlphaBlending();
     //	ofLine(0, 0, radius, 0);
     if(isSleeping()) {

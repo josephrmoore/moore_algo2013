@@ -22,11 +22,14 @@ void Copter::update(){
 }
 void Copter::draw(){
 //    ofRect(pos.x, pos.y, 40, 20);
-    skin.draw(pos, 80, 56);
     ofPushStyle();
-    ofSetColor(0);
-    ofDrawBitmapString(ofToString(baits), pos.x+15, pos.y+15);
+    ofSetColor(ofRandom(255),ofRandom(255),ofRandom(255));
+    skin.draw(pos, 80, 56);
     ofPopStyle();
+//    ofPushStyle();
+//    ofSetColor(ofRandom(255),ofRandom(255),ofRandom(255));
+//    ofDrawBitmapString(ofToString(baits), pos.x+15, pos.y+15);
+//    ofPopStyle();
 }
 
 void Copter::drop(){

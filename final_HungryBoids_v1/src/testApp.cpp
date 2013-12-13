@@ -6,6 +6,10 @@ void testApp::setup(){
 	box.setGravity(0, 5);
 	box.setFPS(30.0);
     box.createGround();
+//    ofRectangle bounds(0, 0, ofGetWidth(), ofGetHeight());
+//    box.createBounds(bounds);
+//    box.setBounds(ofVec2f(0,0),ofVec2f(ofGetWidth(),ofGetHeight()));
+
     box.enableGrabbing();
     box.registerGrabbing();
     level.setup(box.getWorld());

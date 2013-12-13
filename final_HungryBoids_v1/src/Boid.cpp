@@ -68,7 +68,7 @@ void Boid::draw(){
     ofPushStyle();
     ofEnableAlphaBlending();
     ofSetColor(ofRandom(255),ofRandom(255),ofRandom(255));
-    ofRect(ofVec2f(0,0), 10, 10);
+    ofEllipse(ofVec2f(0,0), 10, 10);
     ofPopStyle();
     
 	ofPopMatrix();
