@@ -14,7 +14,7 @@ void testApp::setup(){
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
-    ofBackground(0);
+    ofBackground(ofRandom(255),ofRandom(255),ofRandom(255));
     // State & Level variables
     state_screen = 0;
     state_win = false;
@@ -26,11 +26,16 @@ void testApp::setup(){
     title_word2.limit = 50;
     word1 = ofColor(255);
     word2 = ofColor(255);
-    back = ofColor(255);
+    back = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
     title_bk.loadImage("boids_titlescreen_bk.png");
     title_hungry.loadImage("boids_titlescreen_hungry.png");
     title_boids.loadImage("boids_titlescreen_boids.png");
     title_start.loadImage("boids_titlescreen_start.png");
+    //Win & Lose Screens
+    win_start.loadImage("boids_win.png");
+    lose_start.loadImage("boids_lose.png");
+    win_word.loadImage("boids_win_word.png");
+    lose_word.loadImage("boids_lose_word.png");
     // Sounds
     all.loadSound("boids_notrill.wav");
     all.setLoop(true); //Sound will loop
@@ -120,10 +125,32 @@ void testApp::update(){
         }
     } else if (state_screen==1){
         // lose
-        
+        title_back.update();
+        if(title_back.activate == true){
+            back = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
+            back.setBrightness(255);
+            title_back.reset();
+        }
+        title_word1.update();
+        if(title_word1.activate == true){
+            word1 = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
+            word1.setBrightness(255);
+            title_word1.reset();
+        }
     } else if (state_screen==2){
         // win
-        
+        title_back.update();
+        if(title_back.activate == true){
+            back = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
+            back.setBrightness(255);
+            title_back.reset();
+        }
+        title_word2.update();
+        if(title_word2.activate == true){
+            word2 = ofColor(ofRandom(255),ofRandom(255),ofRandom(255));
+            word2.setBrightness(255);
+            title_word2.reset();
+        }
     } else if (state_screen==4){
         // ending
         
@@ -177,17 +204,15 @@ void testApp::draw(){
 void testApp::keyPressed(int key){
     if(state_screen==0){
         // title
-        if(key == ' '){
-            state_screen = 3;
-            levels_current = 1;
-            noise.stop();
-            all.play();
-            trill.play();
-            copter.load(30000);
-            levels[levels_current-1].load(levels_current);
-            makeShapes(levels[levels_current-1]);
-            copter.baits = 3+levels_current-1;
-        }
+        state_screen = 3;
+        levels_current = 1;
+        noise.stop();
+        all.play();
+        trill.play();
+        copter.load(30000);
+        levels[levels_current-1].load(levels_current);
+        makeShapes(levels[levels_current-1]);
+        copter.baits = 3+levels_current-1;
     } else if (state_screen==1){
         // lose
         if(key == ' '){
@@ -396,20 +421,21 @@ void testApp::title(){
 
 //--------------------------------------------------------------
 void testApp::win(){
+    ofBackground(back);
     ofPushStyle();
-    ofSetColor(0);
-    ofDrawBitmapString("You Win!", 400, 200);
-    ofDrawBitmapString("PRESS SPACE FOR THE NEXT LEVEL", 400, 250);
+    win_start.draw(ofVec2f((ofGetWidth()-win_start.getWidth())/2,500), win_start.getWidth(), win_start.getHeight());
+    ofSetColor(word2);
+    win_word.draw(ofVec2f((ofGetWidth()-win_word.getWidth())/2,100), win_word.getWidth(), win_word.getHeight());
     ofPopStyle();
 }
 
 //--------------------------------------------------------------
 void testApp::lose(){
+    ofBackground(back);
     ofPushStyle();
-    ofSetColor(0);
-    ofDrawBitmapString("You lose. Sorry.", 400, 200);
-    ofDrawBitmapString("PRESS SPACE TO TRY AGAIN", 400, 250);
-    ofDrawBitmapString("PRESS Q TO QUIT", 400, 300);
+    lose_start.draw(ofVec2f((ofGetWidth()-lose_start.getWidth())/2,500), lose_start.getWidth(), lose_start.getHeight());
+    ofSetColor(word1);
+    lose_word.draw(ofVec2f((ofGetWidth()-lose_word.getWidth())/2,100), lose_word.getWidth(), lose_word.getHeight());
     ofPopStyle();
 }
 

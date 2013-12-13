@@ -61,4 +61,6 @@ public:
     vector<Level> levels;
     
     ofImage box2,box3,box4;
+    
+    ofImage win_start, win_word, lose_start, lose_word;
 };
